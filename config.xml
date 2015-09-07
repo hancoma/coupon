@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.coupon.hancoma" version="1.0.6" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>쿠폰내놔</name>
+<widget id="com.clickapp.hancoma" version="1.0.6" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>광고</name>
     <description>
-       쿠폰내놔
+       광고
     </description>
     <author email="ch7@daum.net" href="http://hancoma.com">
-        쿠폰내놔
+        광고
     </author>
-    <content src="http://hancoma.com/coupon/index.html" />
+    <content src="http://hancoma.com/click/index.html" />
     
     <preference name="permissions" value="none" />
     <preference name="phonegap-version" value="3.7.0" />
