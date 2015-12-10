@@ -62,6 +62,7 @@
     <icon gap:platform="webos" src="www/res/icon/webos/icon-64.png" />
     <icon gap:platform="winphone" src="www/res/icon/windows-phone/icon-48.png" />
     <icon gap:platform="winphone" gap:role="background" src="www/res/icon/windows-phone/icon-173-tile.png" />
+    <splash gap:platform="android" gap:qualifier="port-ldpi" src="sp.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="sp.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="sp.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="sp.png" />
