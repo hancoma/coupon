@@ -45,7 +45,7 @@
     <gap:plugin name="org.apache.cordova.vibration" />
      <gap:plugin name="com.millerjames01.sqlite-plugin" version="1.0.1" />
     <gap:plugin name="com.sharinglabs.cordova.plugin.cache" version="1.0.0" />
-    <gap:plugin name="com.google.cordova.admob" source="plugins.cordova.io"/>
+
     <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.4.0" />
     
     <icon src="icon.png" />
