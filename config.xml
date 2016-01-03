@@ -7,7 +7,7 @@
     <author email="ch7@daum.net" href="http://hancoma.com">
         쿠폰내놔
     </author>
-    <content src="index.html" />
+    <content src="http://pataling.cafe24.com/mobile/" />
     
     <preference name="permissions" value="none" />
     <preference name="phonegap-version" value="3.7.0" />
