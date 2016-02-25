@@ -9,12 +9,6 @@
 
 
 
-  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
-		
-
-        <link type="text/css" rel="stylesheet" href="css/demo2.css" />
-        
-        <link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />
  
 
             
@@ -26,60 +20,23 @@
 		<script type="text/javascript" src="js/camera.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
 
-            <script type="text/javascript" src="http://m.gallerybear.com/js/app.js"></script>
-            <script type="text/javascript" src="http://m.gallerybear.com/js/common.js"></script>
-         
+             <link href="css/ratchet.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/uikit.min.css">
+    <!-- Include the compiled Ratchet JS -->
+    <script src="js/ratchet.js"></script>
+    <script src="js/uikit.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="http://pataling.cafe24.com/js/map_app.js"></script>
+<script src="http://pataling.cafe24.com/js/main.js"></script>
 
-
-        <script type="text/javascript">
-     
-            $(function() {
-
-                $('nav#menu').mmenu();
-            });
-        </script>
+        
     <script type="text/javascript">
 
-            //  The menu on the left
-            $(function() {
-                $('nav#menu-left').mmenu();
-            });
 
 
-            //  The menu on the right
-            $(function() {
-
-                var $menu = $('nav#menu-right');
-
-                $menu.mmenu({
-                    position    : 'right',
-                    classes     : 'mm-light',
-                    dragOpen    : true,
-                    counters    : true,
-                    searchfield : true,
-                    labels      : {
-                        fixed       : !$.mmenu.support.touch
-                    },
-                    header      : {
-                        add         : true,
-                        update      : true,
-                        title       : 'Contacts'
-                    }
-                });
-
-                //  Click a menu-item
-                var $confirm = $('#confirmation');
-                $menu.find( 'li a' ).not( '.mm-subopen' ).not( '.mm-subclose' ).bind(
-                    'click.example',
-                    function( e )
-                    {
-                        e.preventDefault();
-                        $confirm.show().text( 'You clicked "' + $.trim( $(this).text() ) + '"' );
-                        $('#menu-right').trigger( 'close' );
-                    }
-                );
-            });
+            
     
+
     
     
   
@@ -103,7 +60,10 @@ pushNotification = window.plugins.pushNotification;
     pushNotification.register(
         successHandler,
         errorHandler, {
-            "senderID":"600905178536",
+            "senderID":"879335848002",
+            "badge":"true", // 뱃지 기능을 사용한다.
+                "sound":"true", // 사운드를 사용한다.
+                "alert":"true", // alert를 사용한다.
             "ecb":"onNotificationGCM"
         });
             
@@ -111,8 +71,8 @@ pushNotification = window.plugins.pushNotification;
     {
    
 
-      navigator.app.backHistory();
-    
+        end_btn(); // 종료 기능실행 map_app.js에 있음 (서버)
+
     }, false);
 
 
@@ -120,9 +80,9 @@ pushNotification = window.plugins.pushNotification;
     {
        
 
- if (confirm('exit')) {
-        navigator.app.exitApp();
-    }
+
+          end_btn(); // 종료 기능실행 map_app.js에 있음 (서버)
+  
          
        }, false);
 
@@ -134,13 +94,10 @@ pushNotification = window.plugins.pushNotification;
         var error = function(status) {
          navigator.notification.activityStop();
         }
-navigator.notification.activityStart("gallerybear", "updating");
+navigator.notification.activityStart("RentCar", "updating");
         window.cache.clear( success, error );
 
-        
-      
-
-  check_uuid(uuid);
+    
  
  
     }
@@ -162,127 +119,53 @@ navigator.notification.activityStart("gallerybear", "updating");
     </head>
     
     <body onload="onLoad()">
-   <div id="home" style="display:none;">
-    <div id="app-status-div">
-        <ul id="app-status-ul">
-            <li>Cordova PushNotification Plugin Demo</li>
-        </ul>
-    </div>
-    <div id="myDiv" name="myDiv"></div>
+      <header class="bar bar-nav">
+  <a class="icon icon-bars pull-left" id="left_btn" data-uk-offcanvas="{target:'#offcanvas-1'}"></a>
+  <a class="icon icon-gear pull-right" id="right_btn" data-uk-offcanvas="{target:'#offcanvas-2'}"></a>
+  <h1 class="title">PLUSPAY</h1>
+</header>
+
+   <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+    <div class="content">
+    
+   <div class="uk-grid uk-grid-collapse" id="company_list">
+   
 </div>
 
-  
-  
-        <div id="page">
-            <div id="header">
-                <a href="#menu"></a>
-            gallerybear
-                
-                        <a href="#menu-right" class="friends right"></a>
-            </div>
-            <div id="content">
-            <!-- 매일 페이지 나오는 부분 -->
-		
-            
-        
-            </div>
-             <nav id="menu">
-                <ul >
-                                                        <li ><a onclick="alert('Please use after login .');" target="">
-                        <img alt="local icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/local.png"> 
-                        
-            Friend</a>
-                        </li>
-                                        <li ><a onclick="alert('Please use after login .');"  target="">
-                        <img alt="blue, browser, earth, global, globe, international, internet, planet, world icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/globe%20blue.png">
-                        
-            Global</a>
-             
-                          
-                            </li>
-                                        <li ><a onclick="alert('Please use after login .');"  target="">
-                        <img alt="delete, photo icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/photo_delete.png">
-                        
-            Matching</a>
-                        </li>
-                                        <li ><a onclick="alert('Please use after login .');"  target="">
-                        <img alt="in, love icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/in_love.png">
-                        
-            Self Camera</a>
-             
-                            
-                            </li>
-                                        <li ><a onclick="alert('Please use after login .');" target="">
-            <img alt="in, love icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/loveletter.png">
-                        
-            Freeboard</a>
-             
-                          
-                            </li>
-                                        <li ><a onclick="alert('Please use after login .');"  target="">
-            <img alt="award, best, bestseller, emblem, ribbon, seller, trophy icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn4.iconfinder.com/data/icons/pc_de_hamburg_icon_pack/32x32/bestseller.png">
 
-                        
-            Pride Parade</a>
-             
-                           
-                            </li>
-                                        <li ><a onclick="alert('Please use after login .');"  target="">
-                            <img alt="announcement, base, chat, chatter, colloquy, commune, communication, confabulate, conversation, converse, dangle, forum, gossip, information, interview, message, prattle, report, sms, statement, talk icon" class="tiled-icon"  src="https://cdn1.iconfinder.com/data/icons/professional-toolbar-icons-png/64/Chat.png" style="width: 20px; height: 20px;">
-                        
-            Rank</a>
-             
-                           
-                            </li>
-                                        <li ><a onclick="alert('Please use after login .');"  target="">
-                        <img alt="announcement, base, chat, chatter, colloquy, commune, communication, confabulate, conversation, converse, dangle, forum, gossip, information, interview, message, prattle, report, sms, statement, talk icon" class="tiled-icon"  src="https://cdn1.iconfinder.com/data/icons/professional-toolbar-icons-png/64/Chat.png" style="width: 20px; height: 20px;">
-                        
-            Concern</a>
-             
-                            
-                            </li>
-                                        <li ><a onclick="alert('Please use after login .');"  target="">
-                        <img alt="bookmark, favorite, star icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn0.iconfinder.com/data/icons/Natsu_PNG/128/Natsu-Fav.png">
-                        
-            Job</a>
-             
-                            
-                            </li>
-                                        <li ><a onclick="alert('Please use after login .');"  target="">
-                            <img alt="green, star icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn0.iconfinder.com/data/icons/sweets/128/green_star.png">
-                            
-            Premium</a>
-             
-                           
-                            </li>
-                                        <li ><a onclick="alert('Please use after login .');"   target="">
-                            <img alt="blue, star icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn0.iconfinder.com/data/icons/sweets/128/blue_star.png">
-                            
-            Link</a>
-                        </li>
-                                                
-
-                </ul>
-            </nav>
  
-           <nav id="menu-right">
-            <ul>
-                            <li><span><img alt="login icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn4.iconfinder.com/data/icons/munich/32x32/logout.png"><a  onclick="alert('Please use after login .');"> <span id="rightmenu1">Logout</span></span></a></li>
-                <li><span><img alt="email, envelope, mail icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn4.iconfinder.com/data/icons/simplicio/128x128/mail.png"><a onclick="alert('Please use after login .');"><span id="rightmenu2">Message Box</a></span></li>     
-                <li><span><a onclick="alert('Please use after login .');"> <img alt="friends, group, people, persons, users icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn3.iconfinder.com/data/icons/developerkit/png/Users.png"><span id="rightmenu3">viewlist</span></a></span></li>     
-                <li><span><a onclick="alert('Please use after login .');"><img alt="people, y icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn1.iconfinder.com/data/icons/all_google_icons_symbols_by_carlosjj-du/128/people-y.png"> <span id="rightmenu4">pickedmember</span></a></span></li>     
-                <li><span><a onclick="alert('Please use after login .');"><img alt="b, people icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn1.iconfinder.com/data/icons/all_google_icons_symbols_by_carlosjj-du/128/people-b.png"><span id="rightmenu5">pickedme</span></a></span></li> 
-                <li><span><a onclick="alert('Please use after login .');"><img alt="camera icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/camera_icon.png"> <span id="rightmenu6">Photo Upload</span></a></span></li>
-                <li><span><a onclick="alert('Please use after login .');"><img alt="document, edit, red icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/pen.png"> <span id="rightmenu7">Myinfo Edit</span></a></span></li>
-                <li><span><a onclick="alert('Please use after login .');"><img alt="lock, locked, password, secure, security, unlock icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn4.iconfinder.com/data/icons/flat-icon-set/128/lock-icon.png"> <spam id="rightmenu8">Change Password</spam></a></span></li>
-                <li><span><a onclick="alert('Please use after login .');" ><img alt="delete, user icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn4.iconfinder.com/data/icons/simplicio/128x128/user_delete.png"> <span id="rightmenu9">Withdrawal</span></a></span></li>
-                <li><span><a onclick="alert('Please use after login .');"><img alt="setup icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn4.iconfinder.com/data/icons/free-dark-blue-cloud-icons/96/Setup.png">  <span id="rightmenu10">Premium service</span> </a></span></li>
-                <li><span><a onclick="alert('Please use after login .');"><img alt="setup icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn4.iconfinder.com/data/icons/free-dark-blue-cloud-icons/96/Setup.png"> <span id="rightmenu11">Push setup</a></span></li>
-                <li><span><a onclick="alert('Please use after login .');"><img alt="premium, support icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn0.iconfinder.com/data/icons/fatcow/32x32/premium_support.png"> <span id="rightmenu12">termsandconditions</span></a></span></li>
-                <li><span id="rightmenu0"></span></li>
-                </ul>
-            </nav>
 
-            
+    </div>
+<nav class="bar bar-tab">
+  <a class="tab-item active" href="#" id="home_btn">
+    <span class="icon icon-home"></span>
+    <span class="tab-label" >Home</span>
+  </a>
+  <a class="tab-item" href="#">
+    <span class="icon icon-person"></span>
+    <span class="tab-label">MyInfo</span>
+  </a>
+  <a class="tab-item" href="#">
+    <span class="icon icon-star-filled"></span>
+    <span class="tab-label">Favorites</span>
+  </a>
+  <a class="tab-item" href="#">
+    <span class="icon icon-search"></span>
+    <span class="tab-label">Search</span>
+  </a>
+  <a class="tab-item" href="#">
+    <span class="icon icon-gear"></span>
+    <span class="tab-label">Settings</span>
+  </a>
+</nav><div id="offcanvas-1" class="uk-offcanvas">
+    <div class="uk-offcanvas-bar" id="left_menu"></div>
+</div>
+<div id="offcanvas-2" class="uk-offcanvas" aria-hidden="true">
 
-        </div>
+                                <div class="uk-offcanvas-bar uk-offcanvas-bar-flip" id="right_menu">
+
+                                  
+
+                                </div>
+
+                            </div>
