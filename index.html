@@ -26,8 +26,7 @@
     <script src="js/ratchet.js"></script>
     <script src="js/uikit.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="http://pataling.cafe24.com/js/map_app.js"></script>
-<script src="http://pataling.cafe24.com/js/main.js"></script>
+
 
         
     <script type="text/javascript">
@@ -94,7 +93,7 @@ pushNotification = window.plugins.pushNotification;
         var error = function(status) {
          navigator.notification.activityStop();
         }
-navigator.notification.activityStart("RentCar", "updating");
+navigator.notification.activityStart("RentCarAny", "updating");
         window.cache.clear( success, error );
 
     
@@ -169,3 +168,20 @@ navigator.notification.activityStart("RentCar", "updating");
                                 </div>
 
                             </div>
+
+                            <script>
+                              
+                              main_display();
+
+                              function main_display() {
+    
+        $.post("main.html",
+        {
+            
+          
+
+        }, function(data) {
+            $("#company_list").html(data);
+        });
+}
+                            </script>
