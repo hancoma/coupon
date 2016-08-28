@@ -1,6 +1,6 @@
 function main_display() {
     
-        $.post("/main.html",
+        $.post("http://pataling.cafe24.com/app_test/main.html",
         {
             
           
