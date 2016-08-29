@@ -29,7 +29,7 @@
  <preference name="SplashScreen" value="foo" />
 <preference name="SplashScreenDelay" value="10000" />
 <preference name="SplashMaintainAspectRatio" value="true|false" />
-<platform name="browser">
+<platform name="android">
     <preference name="SplashScreen" value="www/sp.png" /> <!-- defaults to "img/logo.png" -->
     <preference name="SplashScreenDelay" value="10000" /> <!-- defaults to "3000" -->
     <preference name="SplashScreenBackgroundColor" value="green" /> <!-- defaults to "#464646" -->
@@ -48,18 +48,7 @@
     <icon src="icon.png" density="xxxhdpi"/>
     
   </platform>
-  <platform name="android">
-    <!-- you can use any density that exists in the Android project -->
-    <splash src="www/res/screen/android/splash-land-hdpi.png" density="land-hdpi"/>
-    <splash src="www/res/screen/android/splash-land-ldpi.png" density="land-ldpi"/>
-    <splash src="www/res/screen/android/splash-land-mdpi.png" density="land-mdpi"/>
-    <splash src="www/res/screen/android/splash-land-xhdpi.png" density="land-xhdpi"/>
-
-    <splash src="www/res/screen/android/splash-port-hdpi.png" density="port-hdpi"/>
-    <splash src="www/res/screen/android/splash-port-ldpi.png" density="port-ldpi"/>
-    <splash src="www/res/screen/android/splash-port-mdpi.png" density="port-mdpi"/>
-    <splash src="www/res/screen/android/splash-port-xhdpi.png" density="port-xhdpi"/>
-</platform>
+  
 
 <platform name="ios">
     <!-- images are determined by width and height. The following are supported -->
