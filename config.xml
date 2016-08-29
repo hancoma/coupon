@@ -26,17 +26,8 @@
   <plugin name="cordova-plugin-statusbar" source="npm" spec="~2.1.2"/>
   <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0"/>
   <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1"/>
- <preference name="SplashScreen" value="foo" />
-<preference name="SplashScreenDelay" value="10000" />
-<preference name="SplashMaintainAspectRatio" value="true|false" />
-<platform name="android">
-    <preference name="SplashScreen" value="www/sp.png" /> <!-- defaults to "img/logo.png" -->
-    <preference name="SplashScreenDelay" value="10000" /> <!-- defaults to "3000" -->
-    <preference name="SplashScreenBackgroundColor" value="green" /> <!-- defaults to "#464646" -->
-    <preference name="ShowSplashScreen" value="true" /> <!-- defaults to "true" -->
-    <preference name="SplashScreenWidth" value="600" /> <!-- defaults to "170" -->
-    <preference name="SplashScreenHeight" value="300" /> <!-- defaults to "200" -->
-</platform>
+ 
+
   <icon src="icon.png"/>
    
   <platform name="android">
@@ -48,7 +39,18 @@
     <icon src="icon.png" density="xxxhdpi"/>
     
   </platform>
-  
+  <platform name="android">
+    <!-- you can use any density that exists in the Android project -->
+    <splash src="www/res/screen/android/splash-land-hdpi.png" density="land-hdpi"/>
+    <splash src="www/res/screen/android/splash-land-ldpi.png" density="land-ldpi"/>
+    <splash src="www/res/screen/android/splash-land-mdpi.png" density="land-mdpi"/>
+    <splash src="www/res/screen/android/splash-land-xhdpi.png" density="land-xhdpi"/>
+
+    <splash src="www/res/screen/android/splash-port-hdpi.png" density="port-hdpi"/>
+    <splash src="www/res/screen/android/splash-port-ldpi.png" density="port-ldpi"/>
+    <splash src="www/res/screen/android/splash-port-mdpi.png" density="port-mdpi"/>
+    <splash src="www/res/screen/android/splash-port-xhdpi.png" density="port-xhdpi"/>
+</platform>
 
 <platform name="ios">
     <!-- images are determined by width and height. The following are supported -->
@@ -75,9 +77,7 @@
     <!-- http://developer.blackberry.com/html5/documentation/rim_splash_element.html -->
     <rim:splash src="res/screen/blackberry/splashscreen.png"/>
 </platform>
-<preference name="SplashMaintainAspectRatio" value="true" />
-<preference name="SplashShowOnlyFirstTime" value="true" />
-<preference name="SplashScreenDelay" value="10000" />
+
   <access origin="*"/>
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
