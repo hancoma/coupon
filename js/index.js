@@ -38,6 +38,10 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
+         navigator.splashscreen.show();
+         setTimeout(function() {
+        navigator.splashscreen.hide();
+    }, 2000);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
 
