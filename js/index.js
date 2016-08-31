@@ -16,6 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+ $("#myModalexample").addClass("active");
+   setTimeout(function() {
+        $("#myModalexample").removeClass("active");
+    }, 2000);
 var app = {
     // Application Constructor
     initialize: function() {
@@ -26,6 +30,7 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
+
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
@@ -45,5 +50,13 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+        app.onmain();
+    },
+    onmain: function() {
+       
+       var reg_id=device.uuid;
+       // 기기 번호 검출 
+        
+
     }
 };
