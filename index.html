@@ -50,13 +50,13 @@
 
 <body >
 <div class="uk-grid" >
- <div id="deviceready" class="blink" style="display:none;">
+
+    <div class="uk-width-1-1" id="app_body">
+
+     <div id="deviceready" class="blink" style="display:none;">
             <p class="event listening">Connecting to Device</p>
             <p class="event received">Device is Ready</p>
         </div>
-    <div class="uk-width-1-1" id="app_body">
-
-    
         
        
         <div class="uk-panel uk-panel-box" id="btn0">
@@ -130,9 +130,7 @@ function app_main() {
 
         }, function(data) {
             $("#app_body").html(data);
-        } else {
-            alert("페이지를 불어 오지 못했습니다. 인터넷 상태를 확인하세요.");
-        }
+        } 
         );
 }
 </script>
