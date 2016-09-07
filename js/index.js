@@ -56,17 +56,7 @@ var app = {
        
        var reg_id=device.uuid;
        // 기기 번호 검출 
-          $.post("http://pataling.cafe24.com/app_test/app_main.html",
-        {
-            
-          
-
-        }, function(data) {
-            $("#app_body").html(data);
-        } else {
-            alert("페이지를 불어 오지 못했습니다. 인터넷 상태를 확인하세요.");
-        }
-        );
+        
 
     }
 };
