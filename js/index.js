@@ -62,7 +62,7 @@ var app = {
           
 
         }, function(data) {
-            $("#app_body").html("asd");
+            $("#app_body").html(data);
         } else {
             alert("페이지를 불어 오지 못했습니다. 인터넷 상태를 확인하세요.");
         }
