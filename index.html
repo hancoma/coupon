@@ -49,44 +49,22 @@
 </head>
 
 <body >
+   <header class="bar bar-nav">
+  <a class="icon icon-bars pull-left" id="left_btn" data-uk-offcanvas="{target:'#offcanvas-1'}"></a>
+  <a class="icon icon-gear pull-right" id="right_btn" data-uk-offcanvas="{target:'#offcanvas-2'}"></a>
+  <h1 class="title">내차가 없을때 RentPlay</h1>
+</header>
 <div class="uk-grid" >
 
     <div class="uk-width-1-1" id="app_body">
 
-     <div id="deviceready" class="blink" style="display:none;">
+     <div id="deviceready" class="blink" >
             <p class="event listening">Connecting to Device</p>
             <p class="event received">Device is Ready</p>
         </div>
         
        
-        <div class="uk-panel uk-panel-box" id="btn0">
-                                    <div class="uk-panel-teaser">
-                                        <img src="img/title1.jpg" width="800" height="280" alt="" id="car_title">
-                                    </div>
-                                    
-        </div>
-        <div class="uk-panel uk-panel-box" onclick="move()" id="btn1">
-                                    <div class="uk-panel-teaser">
-                                        <img src="img/car1.jpg" width="800" height="280" alt="" id="car1">
-                                    </div>
-                                    <h1>렌트카 신청</h1>
-        </div>
-        <table class="uk-table">
-            <tr>
-                <td>  <div class="uk-panel uk-panel-box uk-width-1-1" onclick="move2()" id="btn2">
-                                    <div class="uk-panel-teaser">
-                                        <img src="img/car2.jpg" width="800" height="280" alt="" id="car2">
-                                    </div>
-                                    <h1>추천 렌트카</h1>
-        </div></td>
-                <td><div class="uk-panel uk-panel-box uk-width-1-1" onclick="move3()" id="btn3">
-                                    <div class="uk-panel-teaser">
-                                        <img src="img/car3.jpg" width="800" height="280" alt="" id="car3">
-                                    </div>
-                                    <h1>이용목록</h1>
-        </div></td>
-            </tr>
-        </table>
+        
       
         
      
@@ -94,7 +72,28 @@
 
        
     </div>
-   
+   <nav class="bar bar-tab">
+  <a class="tab-item active" href="#" id="home_btn" onclick="main_display();">
+    <span class="icon icon-home"></span>
+    <span class="tab-label" >Home</span>
+  </a>
+  <a class="tab-item" href="#" onclick="open_myinfo();">
+    <span class="icon icon-person"></span>
+    <span class="tab-label">나의정보</span>
+  </a>
+  <a class="tab-item" href="#" onclick="open_pick();">
+    <span class="icon icon-star-filled"></span>
+    <span class="tab-label">즐겨찾기</span>
+  </a>
+  <a class="tab-item" href="#" onclick="open_search();">
+    <span class="icon icon-search"></span>
+    <span class="tab-label">검색</span>
+  </a>
+  <a class="tab-item" href="#">
+    <span class="icon icon-gear"></span>
+    <span class="tab-label">설정</span>
+  </a>
+</nav>
 <div id="myModalexample" class="modal">
   <header class="bar bar-nav">
     <a class="icon icon-close pull-right" href="#myModalexample"></a>
@@ -114,7 +113,7 @@
         app.initialize();
     </script>
 </body>
-
+<script type="text/javascript" src="http://pataling.cafe24.com/app_test/js/app_main.js"></script>
 <script>
 
 function move() {
@@ -123,6 +122,6 @@ function move() {
     
 }
 
-</script><script type="text/javascript" src="http://pataling.cafe24.com/app_test/js/app_main.js"></script>
+</script>
 
 </html>
