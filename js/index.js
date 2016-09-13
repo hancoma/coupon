@@ -16,10 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
- $("#myModalexample").addClass("active");
-   setTimeout(function() {
-        $("#myModalexample").removeClass("active");
-    }, 2000);
+ 
+ 
 var app = {
     // Application Constructor
     initialize: function() {
