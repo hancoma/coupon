@@ -39,10 +39,10 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
  <script type="text/javascript" src="js/jquery.min.js"></script>
  
-      <link rel="stylesheet" type="text/css" href="css/uikit.min.css">
+      <link rel="stylesheet" type="text/css" href="css/uikit.css">
        <link href="css/ratchet.css" rel="stylesheet">
 
-          <script src="js/uikit.min.js"></script>
+          <script src="js/uikit.js"></script>
           <script src="js/ratchet.js"></script>
              <link rel="stylesheet" type="text/css" href="css/index.css" />
     <title>Hello World</title>
@@ -54,10 +54,16 @@
   <a class="icon icon-gear pull-right" id="right_btn" data-uk-offcanvas="{target:'#offcanvas-2'}"></a>
   <h1 class="title">내차가 없을때 RentPlay</h1>
 </header>
+<div style="width:100%;  overflow:hidden;">
+<div id="map"  class="bar bar-standard bar-header-secondary"></div>
+<div class="bar bar-standard">
+  <button class="btn btn-block">Block level button</button>
+</div>
+
 <div class="uk-grid" style="width:100%;">
 
     <div class="uk-width-1-1" id="app_body">
-
+  
      <div id="deviceready" class="blink" >
             <p class="event listening">Connecting to Device</p>
             <p class="event received">Device is Ready</p>
@@ -72,7 +78,11 @@
 
        
     </div>
-   <nav class="bar bar-tab">
+    <div class="bar bar-standard bar-footer-secondary" style="margin-bottom:10px;">
+  <button class="btn btn-block">Block level button</button>
+</div>
+
+<nav class="bar bar-tab">
   <a class="tab-item active" href="#" id="home_btn" onclick="main_display();">
     <span class="icon icon-home"></span>
     <span class="tab-label" >Home</span>
@@ -94,7 +104,7 @@
     <span class="tab-label">설정</span>
   </a>
 </nav>
-
+</div>
 
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
@@ -104,7 +114,8 @@
         app.initialize();
     </script>
 </body>
-<script type="text/javascript" src="http://pataling.cafe24.com/app_test/js/app_main.js"></script>
+
+
 <script>
 
 function move() {
@@ -114,5 +125,23 @@ function move() {
 }
 
 </script>
+<style>
+  #map {
+    width:100%;
+    min-height:150px;
+  }
+</style>
+<script>
 
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 8
+  });
+}
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOiGDfx0CCmT5CdCzC0H_z9hmduc9UmPU&callback=initMap"
+        async defer></script>
 </html>
