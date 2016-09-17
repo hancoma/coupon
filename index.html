@@ -47,7 +47,13 @@
              <link rel="stylesheet" type="text/css" href="css/index.css" />
     <title>Hello World</title>
 </head>
-
+<style>
+  #map {
+    width:100%;
+    min-height:150px;
+    height:150px;
+  }
+</style>
 <body >
    <header class="bar bar-nav">
   <a class="icon icon-bars pull-left" id="left_btn" data-uk-offcanvas="{target:'#offcanvas-1'}"></a>
@@ -56,11 +62,16 @@
 </header>
 <div style="width:100%;  overflow:hidden;">
 <div id="map"  class="bar bar-standard bar-header-secondary"></div>
-<div class="bar bar-standard">
-  <button class="btn btn-block">Block level button</button>
-</div>
 
-<div class="uk-grid" style="width:100%;">
+<ul class="table-view" style="margin-top:45px;">
+  <li class="table-view-cell">출발지 <input name="area1" type=text style="width:20%; border:0px; margin:0px; "> <button class="btn">현재위치</button></li>
+  <li class="table-view-cell">출발일 <input name="date1" type=text style="width:20%; border:0px; margin:0px; "> <button class="btn btn-primary">달력선택</button></li>
+  <li class="table-view-cell">출발시간 <input name="time1" type=text style="width:20%; border:0px; margin:0px; "><button class="btn btn-positive">시간선택</button></li>
+  <li class="table-view-cell">렌트대수 <input name="car1" type=text style="width:20%; border:0px; margin:0px; "><button class="btn btn-negative">차량대수</button></li>
+</ul>
+
+
+<div class="uk-grid" style="width:100%; display:none;">
 
     <div class="uk-width-1-1" id="app_body">
   
@@ -79,7 +90,7 @@
        
     </div>
     <div class="bar bar-standard bar-footer-secondary" style="margin-bottom:10px;">
-  <button class="btn btn-block">Block level button</button>
+  <button class="btn btn-block btn-primary">렌트카 호출</button>
 </div>
 
 <nav class="bar bar-tab">
@@ -125,12 +136,7 @@ function move() {
 }
 
 </script>
-<style>
-  #map {
-    width:100%;
-    min-height:150px;
-  }
-</style>
+
 <script>
 
 var map;
