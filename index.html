@@ -131,12 +131,12 @@
   <div class="content">
     <p class="content-padded">
         <ul class="table-view">
-  <li class="table-view-cell">버스 <button class="btn">선택</button></li>
-  <li class="table-view-cell">대형(그렌즈급) <button class="btn">선택</button></li>
-  <li class="table-view-cell">중형(소나타급) <button class="btn">선택</button></li>
-  <li class="table-view-cell">준중형(아반테급) <button class="btn">선택</button></li>
-  <li class="table-view-cell">소형(액센트급) <button class="btn">선택</button></li>
-  <li class="table-view-cell">경차(마티즈,모닝) <button class="btn">선택</button></li>
+  <li class="table-view-cell">버스 <button class="btn" onclick="select_car('버스');">선택</button></li>
+  <li class="table-view-cell">대형(그렌즈급) <button class="btn" onclick="select_car('대형');">선택</button></li>
+  <li class="table-view-cell">중형(소나타급) <button class="btn" onclick="select_car('중령');">선택</button></li>
+  <li class="table-view-cell">준중형(아반테급) <button class="btn" onclick="select_car('준중형');">선택</button></li>
+  <li class="table-view-cell">소형(액센트급) <button class="btn" onclick="select_car('소형');">선택</button></li>
+  <li class="table-view-cell">경차(마티즈,모닝) <button class="btn" onclick="select_car('경차');">선택</button></li>
 
 </ul>
 
@@ -272,7 +272,15 @@ $("#area_check_btn").click(
 
 
   }
-    </script>
+  function select_car(cartype) {
+    var cartype=cartype
+    $("#cartype").val(cartype);
+  $("#cartype_check").removeClass('active');
+
+    
+  }
+
+  </script>
   
 
 </html>
