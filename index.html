@@ -67,7 +67,7 @@
 <div id="map"  class="bar bar-standard bar-header-secondary" style="height:150px;"></div>
 
 <ul class="table-view" style="margin-top:45px;">
-  <li class="table-view-cell">출발지 <input name="area1" id="area1" type=text style="width:70%; border:0px; margin:0px; "> <a class="btn" href="#area_check">현재위치</button></a>
+  <li class="table-view-cell">출발지 <input name="area1" id="area1" readonly type=text style="width:70%; border:0px; margin:0px; " onclick="open_area_check();"> <a class="btn" href="#area_check">위치선택</button></a>
   <li class="table-view-cell">출발일 <input name="date1" type=date id="date1" style="width:70%; border:0px; margin:0px; "> <button class="btn btn-primary">달력선택</button></li>
   <li class="table-view-cell">출발시간 <input name="time1" type="datetime-local" id="time1" style="width:70%; border:0px; margin:0px; "><button class="btn btn-positive">시간선택</button></li>
   <li class="table-view-cell">렌트대수 <input id="car1" name="car1" type="range"  min="1" max="10" value="1" style="width:70%; border:0px; margin:0px; "><button class="btn btn-negative" id="car1_num">1대</button></li>
@@ -242,5 +242,13 @@ $("#area_check_btn").click(
     $("#area_check").removeClass('active');
 
   })
+
+  function open_area_check() {
+   $("#area_check").addClass('active');
+
+
+  }
     </script>
+  
+
 </html>
