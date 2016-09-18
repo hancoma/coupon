@@ -52,31 +52,31 @@
 </head>
 <style>
   #map {
-    width:100%;
-  
-    height:150px;
+    position: relative;
   }
 </style>
-<body onload="initMap();">
-   <header class="bar bar-nav">
+<body onload="initMap();" style=" overflow:scroll;">
+   <header class="bar bar-nav" style="z-index:9999999999;">
   <a class="icon icon-bars pull-left" id="left_btn" data-uk-offcanvas="{target:'#offcanvas-1'}"></a>
   <a class="icon icon-gear pull-right" id="right_btn" data-uk-offcanvas="{target:'#offcanvas-2'}"></a>
   <h1 class="title">내차가 없을때 RentPlay</h1>
 </header>
-<div style="width:100%;  overflow:hidden;">
-<div id="map"  class="bar bar-standard bar-header-secondary" style="height:150px;"></div>
-
+<div style="width:100%; height:100%;  overflow:scroll;">
+<div id="map"  class="bar bar-standard bar-header-secondary" style="height:150px; width:100%; float:left; position:"></div>
+<div style="width:100%; height:80%;  overflow:hidden;">
 <ul class="table-view" style="margin-top:45px;">
   <li class="table-view-cell">출발지 <input name="area1" id="area1" readonly type=text style="width:70%; border:0px; margin:0px; " onclick="open_area_check();"> <a class="btn" href="#area_check">위치선택</button></a></li>
   <li class="table-view-cell">차량선택 <input name="cartype" id="cartype" readonly type=text style="width:70%; border:0px; margin:0px; " onclick="open_cartype_check();"> <a class="btn" href="#cartype_check">차종선택</button></a></li>
   
   <li class="table-view-cell">출발일 <input name="date1" type=date id="date1" style="width:70%; border:0px; margin:0px; "> <button class="btn btn-primary">달력선택</button></li>
+  <li class="table-view-cell">출발시간 <input id="time1" name="time1" type="range"  min="1" max="24" value="1" style="width:70%; border:0px; margin:0px; "><button class="btn btn-primary" id="time1_num">1시</button></li>
  
   <li class="table-view-cell">렌트대수 <input id="car1" name="car1" type="range"  min="1" max="10" value="1" style="width:70%; border:0px; margin:0px; "><button class="btn btn-negative" id="car1_num">1대</button></li>
+
 </ul>
+</div>
 
-
-<div class="uk-grid" style="width:100%; display:none;">
+<div class="uk-grid" style="width:100%; display:none; ">
 
     <div class="uk-width-1-1" id="app_body">
   
@@ -131,7 +131,7 @@
   <div class="content">
     <p class="content-padded">
         <ul class="table-view">
-  <li class="table-view-cell">버스 <button class="btn" onclick="select_car('버스');">선택</button></li>
+  <li class="table-view-cell">승합차 <button class="btn" onclick="select_car('승합차');">선택</button></li>
   <li class="table-view-cell">대형(그렌즈급) <button class="btn" onclick="select_car('대형');">선택</button></li>
   <li class="table-view-cell">중형(소나타급) <button class="btn" onclick="select_car('중령');">선택</button></li>
   <li class="table-view-cell">준중형(아반테급) <button class="btn" onclick="select_car('준중형');">선택</button></li>
@@ -196,6 +196,12 @@ $("#car1").change(
   function() {
     var car1=$("#car1").val();
     $("#car1_num").html(car1+"대");
+  }
+  );
+$("#time1").change(
+  function() {
+    var time1=$("#time1").val();
+    $("#time1_num").html(time1+"시");
   }
   );
 
