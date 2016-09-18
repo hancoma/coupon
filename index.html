@@ -67,7 +67,9 @@
 <div id="map"  class="bar bar-standard bar-header-secondary" style="height:150px;"></div>
 
 <ul class="table-view" style="margin-top:45px;">
-  <li class="table-view-cell">출발지 <input name="area1" id="area1" readonly type=text style="width:70%; border:0px; margin:0px; " onclick="open_area_check();"> <a class="btn" href="#area_check">위치선택</button></a>
+  <li class="table-view-cell">출발지 <input name="area1" id="area1" readonly type=text style="width:70%; border:0px; margin:0px; " onclick="open_area_check();"> <a class="btn" href="#area_check">위치선택</button></a></li>
+  <li class="table-view-cell">차량선택 <input name="cartype" id="cartype" readonly type=text style="width:70%; border:0px; margin:0px; " onclick="open_cartype_check();"> <a class="btn" href="#cartype_check">차종선택</button></a></li>
+  
   <li class="table-view-cell">출발일 <input name="date1" type=date id="date1" style="width:70%; border:0px; margin:0px; "> <button class="btn btn-primary">달력선택</button></li>
  
   <li class="table-view-cell">렌트대수 <input id="car1" name="car1" type="range"  min="1" max="10" value="1" style="width:70%; border:0px; margin:0px; "><button class="btn btn-negative" id="car1_num">1대</button></li>
@@ -119,6 +121,28 @@
   </a>
 </nav>
 </div>
+
+<div id="cartype_check" class="modal">
+  <header class="bar bar-nav">
+    <a class="icon icon-close pull-right" href="#cartype_check"></a>
+    <h1 class="title">차종선택</h1>
+  </header>
+
+  <div class="content">
+    <p class="content-padded">
+        <ul class="table-view">
+  <li class="table-view-cell">버스 <button class="btn">선택</button></li>
+  <li class="table-view-cell">대형(그렌즈급) <button class="btn">선택</button></li>
+  <li class="table-view-cell">중형(소나타급) <button class="btn">선택</button></li>
+  <li class="table-view-cell">준중형(아반테급) <button class="btn">선택</button></li>
+  <li class="table-view-cell">소형(액센트급) <button class="btn">선택</button></li>
+  <li class="table-view-cell">경차(마티즈,모닝) <button class="btn">선택</button></li>
+
+</ul>
+
+    </p>
+    </div>
+    </div>
 <div id="area_check" class="modal">
   <header class="bar bar-nav">
     <a class="icon icon-close pull-right" href="#area_check"></a>
