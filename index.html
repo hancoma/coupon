@@ -186,12 +186,37 @@ function move() {
 <script>
 
 var map;
+var marker;
 function initMap() {
+
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
-    zoom: 8
+    zoom:15
   });
+  navigator.geolocation.getCurrentPosition(success, error);
 }
+
+ function success(position) {
+ 
+   
+var geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      map.setCenter(geolocation);
+      var marker = new google.maps.Marker({
+        map: map,
+        position: geolocation
+      });
+
+  
+  };
+
+  function error() {
+  alert("현위치 검색중");
+  };
+
+
 $("#car1").change(
   function() {
     var car1=$("#car1").val();
@@ -226,7 +251,7 @@ function initAutocomplete() {
   autocomplete = new google.maps.places.Autocomplete(
       /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
       {types: ['geocode']});
-
+ var geocoder = new google.maps.Geocoder();
   // When the user selects an address from the dropdown, populate the address
   // fields in the form.
   autocomplete.addListener('place_changed', fillInAddress);
@@ -236,8 +261,9 @@ function initAutocomplete() {
 function fillInAddress() {
   // Get the place details from the autocomplete object.
   var place = autocomplete.getPlace();
-
- 
+   var geocoder = new google.maps.Geocoder();
+geocodeAddress(geocoder, map);
+   // 지도 마크 
 
   // Get each component of the address from the place details
   // and fill the corresponding field on the form.
@@ -259,11 +285,29 @@ function geolocate() {
         center: geolocation,
         radius: position.coords.accuracy
       });
+
       autocomplete.setBounds(circle.getBounds());
+
     });
   }
 }
 // [END region_geolocation]
+
+function geocodeAddress(geocoder, resultsMap) {
+  var address = document.getElementById('autocomplete').value;
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      resultsMap.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location,
+        zoom: 2
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
 
 $("#area_check_btn").click(
   function() {
