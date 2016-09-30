@@ -63,7 +63,7 @@ var app = {
     pushNotification.register(
         successHandler,
         errorHandler, {
-            "senderID":"492152097523",
+            "senderID":"250444631411",
             "badge":"true", // 뱃지 기능을 사용한다.
                 "sound":"true", // 사운드를 사용한다.
                 "alert":"true", // alert를 사용한다.
