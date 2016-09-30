@@ -459,7 +459,7 @@ pushNotification = window.plugins.pushNotification;
                 "alert":"true", // alert를 사용한다.
             "ecb":"onNotificationGCM"
         });
-    
+
  function onNotificationGCM(e) {
     
     switch( e.event )
@@ -467,7 +467,7 @@ pushNotification = window.plugins.pushNotification;
     case 'registered':
         if ( e.regid.length > 0 )
         {
-           
+                  alert(e.regid);    
                    json_call(e.regid); //gcm 코드 저장
         }
     break;

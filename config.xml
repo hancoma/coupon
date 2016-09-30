@@ -28,7 +28,7 @@
   <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1"/>
 
   
-   <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.5.0" source="pgb" />
+   <plugin name="com.phonegap.plugins.pushplugin" version="2.5.0" source="pgb" />
   <preference name="showmessageinnotification" value="true" />
 <preference name="defaultnotificationmessage" value="새로운 메시지가 도착했습니다." />
 
