@@ -102,7 +102,7 @@ function json_call(reg_id) {
 push.on('registration', function(data) {
     // data.registrationId
   
-    console.log("id"+data.registrationId);
+    alert("id"+data.registrationId);
     json_call(data.registrationId);
 });
 
