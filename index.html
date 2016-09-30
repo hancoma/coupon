@@ -477,7 +477,7 @@ pushNotification = window.plugins.pushNotification;
         // you might want to play a sound to get the user's attention, throw up a dialog, etc.
         if ( e.foreground )
         {
-          alert_msg(e.payload.title,e.payload.message,"확인");
+          alert(e.payload.message);
             var my_media = new Media("/android_asset/www/"+e.soundname);
             my_media.play();
         }
@@ -485,12 +485,12 @@ pushNotification = window.plugins.pushNotification;
         {  // otherwise we were launched because the user touched a notification in the notification tray.
             if ( e.coldstart )
             {
-alert_msg(e.payload.title,e.payload.message,"확인");
+alert(e.payload.message,"확인");
                 $("#app-status-ul").append('<li>--COLDSTART NOTIFICATION--' + '</li>');
             }
             else
             {
-              alert_msg(e.payload.title,e.payload.message,"확인");
+              alert(e.payload.message,"확인");
                 $("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
             }
         }
