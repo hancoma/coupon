@@ -77,6 +77,26 @@ var app = {
 });
 
 
+push.on('registration', function(data) {
+    alert(data.registrationId);
+});
+
+push.on('notification', function(data) {
+    alert(data.message);
+ 
+    alert(data.event);
+    
+   // display_call(data.message);
+    
+   
+});
+
+push.on('error', function(e) {
+    // e.message
+    alert(e.message);
+});
+
+
     }
 };
 
@@ -102,22 +122,3 @@ function json_call(reg_id) {
 
 
    
-
-push.on('registration', function(data) {
-    console.log(data.registrationId);
-});
-
-push.on('notification', function(data) {
-    alert(data.message+"!"+data.registrationId);
- 
-    alert(data.event);
-    
-   // display_call(data.message);
-    
-   
-});
-
-push.on('error', function(e) {
-    // e.message
-    alert(e.message);
-});
