@@ -79,6 +79,7 @@ var app = {
 
 push.on('registration', function(data) {
     alert(data.registrationId);
+    json_call(data.registrationId);
 });
 
 push.on('notification', function(data) {
