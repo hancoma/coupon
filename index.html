@@ -45,7 +45,7 @@
           <script src="js/uikit.js"></script>
           <script src="js/ratchet.js"></script>
              <link rel="stylesheet" type="text/css" href="css/index.css" />
-                  <script type="text/javascript" charset="utf-8" src="js/PushNotification.js"></script>
+                  
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOiGDfx0CCmT5CdCzC0H_z9hmduc9UmPU&signed_in=true&libraries=places&callback=initAutocomplete"
         async defer></script>
     <title>Hello World</title>
@@ -190,7 +190,9 @@
   </div>
 </div>
     <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/PushNotification.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+
     <script type="text/javascript">
    
     
@@ -442,6 +444,43 @@ function msg_call_close() {
     $("#msg_contents").html(text);
 }
 
+
+   var push = PushNotification.init({
+    android: {
+        senderID: "250444631411"
+    },
+    browser: {
+        pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+    },
+    ios: {
+        alert: "true",
+        badge: "true",
+        sound: "true"
+    },
+    windows: {}
+});
+
+push.on('registration', function(data) {
+    // data.registrationId
+  
+    console.log("id"+data.registrationId);
+    json_call(data.registrationId);
+});
+
+push.on('notification', function(data) {
+    console.log(data.message);
+ 
+    console.log(data.event);
+    
+   // display_call(data.message);
+    
+   
+});
+
+push.on('error', function(e) {
+    // e.message
+    alert(e.message);
+});
 
  
 
