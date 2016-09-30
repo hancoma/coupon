@@ -17,7 +17,7 @@
  * under the License.
  */
  
- var pushNotification;
+var push;
 var app = {
     // Application Constructor
     initialize: function() {
@@ -56,21 +56,22 @@ var app = {
        // 기기 번호 검출 
           console.log('Received Event: ' + reg_id);
 
+          push = PushNotification.init({
+    android: {
+        senderID: "394799583877"
+    },
+    browser: {
+        pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+    },
+    ios: {
+        alert: "true",
+        badge: "true",
+        sound: "true"
+    },
+    windows: {}
+});
 
-pushNotification = window.plugins.pushNotification;
 
-
-
-
-    pushNotification.register(
-        successHandler,
-        errorHandler, {
-            "senderID":"394799583877",
-            "badge":"true", // 뱃지 기능을 사용한다.
-                "sound":"true", // 사운드를 사용한다.
-                "alert":"true", // alert를 사용한다.
-            "ecb":"onNotificationGCM"
-        }); 
     }
 };
 
@@ -89,57 +90,32 @@ function json_call(reg_id) {
     
    //  alert("ok");
    })
-       }
+       } 
 
 
+ 
 
 
- function onNotificationGCM(e) {
+   
+
+push.on('registration', function(data) {
+    // data.registrationId
+  
+   alert("id"+data.registrationId);
+    json_call(data.registrationId);
+});
+
+push.on('notification', function(data) {
+    console.log(data.message);
+ 
+    console.log(data.event);
     
-    switch( e.event )
-    {
-    case 'registered':
-        if ( e.regid.length > 0 )
-        {
-                  alert(e.regid);    
-                   json_call(e.regid); //gcm 코드 저장
-        }
-    break;
+   // display_call(data.message);
+    
+   
+});
 
-    case 'message':
-        // if this flag is set, this notification happened while we were in the foreground.
-        // you might want to play a sound to get the user's attention, throw up a dialog, etc.
-        if ( e.foreground )
-        {
-          alert(e.payload.message);
-            var my_media = new Media("/android_asset/www/"+e.soundname);
-            my_media.play();
-        }
-        else
-        {  // otherwise we were launched because the user touched a notification in the notification tray.
-            if ( e.coldstart )
-            {
-alert(e.payload.message);
-            }
-            else
-            {
-              alert(e.payload.message);
-            }
-        }
-
-    break;
-
-    case 'error':
-        alert('<li>ERROR -> MSG:' + e.msg + '</li>');
-    break;
-
-    default:
-        alert('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
-    break;
-  }
-}
-
- 
-
-
- 
+push.on('error', function(e) {
+    // e.message
+    alert(e.message);
+});
