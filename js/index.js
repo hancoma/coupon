@@ -106,9 +106,9 @@ push.on('registration', function(data) {
 });
 
 push.on('notification', function(data) {
-    console.log(data.message);
+    alert(data.message+"!"+data.registrationId);
  
-    console.log(data.event);
+    alert(data.event);
     
    // display_call(data.message);
     
