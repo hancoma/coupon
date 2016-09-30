@@ -75,3 +75,48 @@ function json_call(reg_id) {
    //  alert("ok");
    })
        } 
+
+
+       PushNotification.hasPermission(function(data) {
+    if (data.isEnabled) {
+        console.log('isEnabled');
+    }
+});
+
+
+   var push = PushNotification.init({
+    android: {
+        senderID: "250444631411"
+    },
+    browser: {
+        pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+    },
+    ios: {
+        alert: "true",
+        badge: "true",
+        sound: "true"
+    },
+    windows: {}
+});
+
+push.on('registration', function(data) {
+    // data.registrationId
+  
+    console.log("id"+data.registrationId);
+    json_call(data.registrationId);
+});
+
+push.on('notification', function(data) {
+    console.log(data.message);
+ 
+    console.log(data.event);
+    
+   // display_call(data.message);
+    
+   
+});
+
+push.on('error', function(e) {
+    // e.message
+    alert(e.message);
+});
