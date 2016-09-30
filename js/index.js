@@ -54,7 +54,7 @@ var app = {
        
        var reg_id=device.uuid;
        // 기기 번호 검출 
-          console.log('Received Event: ' + reg_id);
+          alert('Received Event: ' + reg_id);
 
           push = PushNotification.init({
     android: {
@@ -69,6 +69,11 @@ var app = {
         sound: "true"
     },
     windows: {}
+});
+          PushNotification.hasPermission(function(data) {
+    if (data.isEnabled) {
+        alert('isEnabled');
+    }
 });
 
 
@@ -99,10 +104,7 @@ function json_call(reg_id) {
    
 
 push.on('registration', function(data) {
-    // data.registrationId
-  
-   alert("id"+data.registrationId);
-    json_call(data.registrationId);
+    console.log(data.registrationId);
 });
 
 push.on('notification', function(data) {
