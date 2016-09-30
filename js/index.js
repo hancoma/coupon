@@ -83,40 +83,65 @@ function json_call(reg_id) {
     }
 });
 
-
-   var push = PushNotification.init({
-    android: {
-        senderID: "250444631411"
-    },
-    browser: {
-        pushServiceURL: 'http://push.api.phonegap.com/v1/push'
-    },
-    ios: {
-        alert: "true",
-        badge: "true",
-        sound: "true"
-    },
-    windows: {}
-});
-
-push.on('registration', function(data) {
-    // data.registrationId
-  
-    alert("id"+data.registrationId);
-    json_call(data.registrationId);
-});
-
-push.on('notification', function(data) {
-    console.log(data.message);
- 
-    console.log(data.event);
-    
-   // display_call(data.message);
-    
+ var pushNotification;
    
-});
+pushNotification = window.plugins.pushNotification;
 
-push.on('error', function(e) {
-    // e.message
-    alert(e.message);
-});
+
+
+
+    pushNotification.register(
+        successHandler,
+        errorHandler, {
+            "senderID":"492152097523",
+            "badge":"true", // 뱃지 기능을 사용한다.
+                "sound":"true", // 사운드를 사용한다.
+                "alert":"true", // alert를 사용한다.
+            "ecb":"onNotificationGCM"
+        });
+
+function onNotificationGCM(e) {
+    
+    switch( e.event ){
+    case 'registered':
+        if ( e.regid.length > 0 ){
+          json_call(e.regid); //gcm 코드 저장
+        }
+    break;
+
+    case 'message':
+        // if this flag is set, this notification happened while we were in the foreground.
+        // you might want to play a sound to get the user's attention, throw up a dialog, etc.
+        if ( e.foreground ){
+      //alert_msg(e.payload.title,e.payload.message,"확인");
+            var my_media = new Media("/android_asset/www/"+e.soundname);
+            my_media.play();
+      
+      
+        }else{  // otherwise we were launched because the user touched a notification in the notification tray.
+            if ( e.coldstart ){
+        //alert_msg(e.payload.title,e.payload.message,"확인");
+                alert('<li>--COLDSTART NOTIFICATION--' + '</li>');
+            }else{
+              //alert_msg(e.payload.title,e.payload.message,"확인");
+                alert('<li>--BACKGROUND NOTIFICATION--' + '</li>');
+            }
+        }
+
+        alert('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
+        alert('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
+    
+    
+    break;
+
+    case 'error':
+        alert('<li>ERROR -> MSG:' + e.msg + '</li>');
+    break;
+
+    default:
+        alert('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
+    break;
+  }
+  
+
+}
