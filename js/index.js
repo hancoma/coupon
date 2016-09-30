@@ -58,3 +58,20 @@ var app = {
 
     }
 };
+
+// reg_id 등록 
+function json_call(reg_id) {
+      var reg_id=reg_id;
+      var deviceid=device.uuid;
+       
+         $.post("http://pataling.cafe24.com/app_test/gcm_reg_app_call.php",
+   {
+    reg_id:reg_id,
+    deviceid:deviceid
+   },
+   function(data){
+    var data;
+    
+   //  alert("ok");
+   })
+       } 

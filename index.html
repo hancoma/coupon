@@ -45,7 +45,7 @@
           <script src="js/uikit.js"></script>
           <script src="js/ratchet.js"></script>
              <link rel="stylesheet" type="text/css" href="css/index.css" />
-              
+                  <script type="text/javascript" charset="utf-8" src="js/PushNotification.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOiGDfx0CCmT5CdCzC0H_z9hmduc9UmPU&signed_in=true&libraries=places&callback=initAutocomplete"
         async defer></script>
     <title>Hello World</title>
@@ -452,7 +452,7 @@ function msg_call_close() {
 
    var push = PushNotification.init({
     android: {
-        senderID: "665522737095"
+        senderID: "250444631411"
     },
     browser: {
         pushServiceURL: 'http://push.api.phonegap.com/v1/push'
@@ -477,7 +477,7 @@ push.on('notification', function(data) {
  
     console.log(data.event);
     
-    display_call(data.message);
+   // display_call(data.message);
     
    
 });
