@@ -17,7 +17,7 @@
  * under the License.
  */
  
- 
+ var pushNotification;
 var app = {
     // Application Constructor
     initialize: function() {
@@ -55,7 +55,20 @@ var app = {
        var reg_id=device.uuid;
        // 기기 번호 검출 
           console.log('Received Event: ' + reg_id);
+            pushNotification = window.plugins.pushNotification;
 
+
+
+
+    pushNotification.register(
+        successHandler,
+        errorHandler, {
+            "senderID":"492152097523",
+            "badge":"true", // 뱃지 기능을 사용한다.
+                "sound":"true", // 사운드를 사용한다.
+                "alert":"true", // alert를 사용한다.
+            "ecb":"onNotificationGCM"
+        });
     }
 };
 
@@ -77,28 +90,11 @@ function json_call(reg_id) {
        } 
 
 
-       PushNotification.hasPermission(function(data) {
-    if (data.isEnabled) {
-        console.log('isEnabled');
-    }
-});
+ 
 
- var pushNotification;
+ 
    
-pushNotification = window.plugins.pushNotification;
 
-
-
-
-    pushNotification.register(
-        successHandler,
-        errorHandler, {
-            "senderID":"492152097523",
-            "badge":"true", // 뱃지 기능을 사용한다.
-                "sound":"true", // 사운드를 사용한다.
-                "alert":"true", // alert를 사용한다.
-            "ecb":"onNotificationGCM"
-        });
 
 function onNotificationGCM(e) {
     
