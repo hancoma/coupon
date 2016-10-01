@@ -84,7 +84,7 @@ push.on('registration', function(data) {
 });
 
 push.on('notification', function(data) {
-   navigator.notification.alert(data.message);
+   alert(data.message);
  
   
     
