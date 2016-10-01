@@ -17,7 +17,7 @@
  * under the License.
  */
  
-var window.alert = navigator.notification.alert;
+window.alert = navigator.notification.alert;
 var push;
 var app = {
     // Application Constructor
@@ -86,7 +86,7 @@ push.on('registration', function(data) {
 push.on('notification', function(data) {
    alert(data.message);
  
-    console.log(data.event);
+    alert(data.event);
     
    // display_call(data.message);
     
