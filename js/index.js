@@ -84,7 +84,7 @@ push.on('registration', function(data) {
 });
 
 push.on('notification', function(data) {
-    window.alert(data.message);
+   alert(data.message);
  
     console.log(data.event);
     
