@@ -26,8 +26,8 @@
   <plugin name="cordova-plugin-statusbar" source="npm" spec="~2.1.2"/>
   <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0"/>
   <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1"/>
-  <plugin name="com.developersanddesigners.phonegapdialogs" spec="1.1.1" source="pgb" />"
-
+  <plugin name="com.developersanddesigners.phonegapdialogs" spec="1.1.1" source="pgb" />
+<plugin name="com.localnotification.gotcakes" spec="0.1.0" source="pgb" />
 <preference name="android-build-tool" value="gradle" />
 <plugin name="phonegap-plugin-push" source="npm">
     <param name="SENDER_ID" value="394799583877" />
