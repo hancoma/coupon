@@ -17,6 +17,7 @@
  * under the License.
  */
  
+var window.alert = navigator.notification.alert;
 var push;
 var app = {
     // Application Constructor
@@ -54,7 +55,7 @@ var app = {
        
        var reg_id=device.uuid;
        // 기기 번호 검출 
-          alert('Received Event: ' + reg_id);
+          console.log('Received Event: ' + reg_id);
 
           push = PushNotification.init({
     android: {
@@ -72,20 +73,20 @@ var app = {
 });
           PushNotification.hasPermission(function(data) {
     if (data.isEnabled) {
-        alert('isEnabled');
+        console.log('isEnabled');
     }
 });
 
 
 push.on('registration', function(data) {
-    alert(data.registrationId);
+    console.log(data.registrationId);
     json_call(data.registrationId);
 });
 
 push.on('notification', function(data) {
-    alert(data.message);
+    window.alert(data.message);
  
-    alert(data.event);
+    console.log(data.event);
     
    // display_call(data.message);
     
@@ -94,7 +95,7 @@ push.on('notification', function(data) {
 
 push.on('error', function(e) {
     // e.message
-    alert(e.message);
+    console.log(e.message);
 });
 
 

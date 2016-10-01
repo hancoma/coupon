@@ -1,4 +1,4 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.rantcar.hancoma" version="1.1.0" versionCode = "116">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.rantcar.hancoma" version="1.1.1" versionCode = "117">
   <name>렌트플레이</name>
   <description>렌트카의 새로운 바람 렌트플레이</description>
   <author href="http://hancoma.com" email="ch7@daum.net">hancoma.com</author>
@@ -26,7 +26,7 @@
   <plugin name="cordova-plugin-statusbar" source="npm" spec="~2.1.2"/>
   <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0"/>
   <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1"/>
-
+<plugin name="com.localnotification.gotcakes" spec="0.1.0" source="pgb" />
 <preference name="android-build-tool" value="gradle" />
 <plugin name="phonegap-plugin-push" source="npm">
     <param name="SENDER_ID" value="394799583877" />
