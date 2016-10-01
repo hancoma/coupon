@@ -87,7 +87,7 @@ push.on('notification', function(data) {
   // alert(data.message);
  
   window.plugins.spinnerDialog.show(null, data.message);
-    
+  
    // display_call(data.message);
     
    
@@ -101,6 +101,8 @@ push.on('error', function(e) {
 
     }
 };
+
+
 
 // reg_id 등록 
 function json_call(reg_id) {
