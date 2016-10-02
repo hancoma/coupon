@@ -394,6 +394,7 @@ function display_call_info(message) {
     var msg2=message.split('번콜');
     var no=msg2[0];
     console.log(no);
+       $("#mypage_modal").removeClass('active');
      $("#call_info_modal").addClass('active');
 
      $.post("http://pataling.cafe24.com/app_test/call_info_no.php",
