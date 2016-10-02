@@ -87,7 +87,7 @@ push.on('notification', function(data) {
   // alert(data.message);
  
   window.plugins.spinnerDialog.show(null, data.message);
-  
+  display_call_info(data.message);
    // display_call(data.message);
     
    
@@ -126,3 +126,24 @@ function json_call(reg_id) {
 
 
    
+ function display_call_info(message) {
+    var uuid=device.uuid;
+    var message=message;
+    console.log(message);
+    var msg2=message.split('번콜');
+    var no=msg2[0];
+    console.log(no);
+    var modal = UIkit.modal("#call_info_modal");
+
+    modal.show();
+
+     $.post("http://pataling.cafe24.com/app_test/call_info.php",
+   {
+    uuid:uuid,
+    no:no
+      },
+   function(data){
+       $("#call_info_contents").html(data);
+      }
+      );
+  }
