@@ -387,6 +387,41 @@ $("#area_check_btn").click(
       );
   }
 
+function display_call_info(message) {
+    var uuid=device.uuid;
+    var message=message;
+    console.log(message);
+    var msg2=message.split('번콜');
+    var no=msg2[0];
+    console.log(no);
+     $("#call_info_modal").addClass('active');
+
+     $.post("http://pataling.cafe24.com/app_test/call_info_no.php",
+   {
+    uuid:uuid,
+    no:no
+      },
+   function(data){
+       $("#call_info_contents").html(data);
+      }
+      );
+  }
+
+  function call_info_modal() {
+    var uuid=device.uuid;
+   $("#mypage_modal").addClass('active');
+     $.post("http://pataling.cafe24.com/app_test/mypage.php",
+   {
+    uuid:uuid
+      },
+   function(data){
+        $("#mypage_contents").html(data);
+      }
+      );
+  }
+
+
+
 $("#mypage_btn").click(
   function() {
      $("#mypage_modal").removeClass('active');
