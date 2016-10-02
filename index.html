@@ -425,6 +425,27 @@ function display_company_info(no,call_no) {
 
 }
 
+function call_end(call_no,company_no) {
+  var company_no=company_no;
+  var call_no=call_no;
+  var uuid=device.uuid;
+     $.post("http://pataling.cafe24.com/app_test/call_end.php",
+   {
+    uuid:uuid,
+    company_no:company_no,
+    call_no:call_no
+      },
+   function(data){
+     $("#mypage_modal").removeClass('active');
+     $("#call_info_modal").removeClass('active');
+       window.plugins.spinnerDialog.show(null, "콜이 선정되었습니다.");
+      }
+      );
+
+}
+
+
+
 
   function call_info_modal() {
     var uuid=device.uuid;
