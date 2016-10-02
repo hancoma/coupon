@@ -408,13 +408,15 @@ function display_call_info(message) {
       );
   }
 
-function display_company_info(no) {
+function display_company_info(no,call_no) {
   var no=no;
+  var call_no=call_no;
   var uuid=device.uuid;
      $.post("http://pataling.cafe24.com/app_test/company_info.php",
    {
     uuid:uuid,
-    no:no
+    no:no,
+    call_no:call_no
       },
    function(data){
        $("#call_info_contents").html(data);
