@@ -147,3 +147,20 @@ function json_call(reg_id) {
       }
       );
   }
+
+  function display_info_no (no) {
+    var no=no;
+    var modal = UIkit.modal("#call_info_modal");
+
+    modal.show();
+
+     $.post("http://pataling.cafe24.com/app_test/call_info_no.php",
+   {
+    uuid:uuid,
+    no:no
+      },
+   function(data){
+       $("#call_info_contents").html(data);
+      }
+      ); 
+  }
