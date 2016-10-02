@@ -150,6 +150,9 @@ function json_call(reg_id) {
 
   function display_info_no (no) {
     var no=no;
+    var modal2= UIkit.modal("#mypage_modal");
+modal2.hide();
+
     var modal = UIkit.modal("#call_info_modal");
 
     modal.show();
