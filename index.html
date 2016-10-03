@@ -484,9 +484,14 @@ if ( modal.isActive() ) {
 } else {
     modal.show();
 }
-   
+   navigator.notification.alert(
+    '호출했습니다.',  // message
+    alertDismissed,         // callback
+    '알림',            // title
+    'Done'                  // buttonName
+);
   
-    navigator.notification.alert("호출했습니다.",,"알림");
+  
   save_call();
   });
 
@@ -511,18 +516,18 @@ function save_call() {
       },
    function(data){
         if (data) {
+}
+
+function msg_call(text) {
+    var text=text;
+    var modal = UIkit.modal("#msg_modal",{center: true, modal: false});
+
           msg_call_close();
         } 
       }
       );
 
         
-
-}
-
-function msg_call(text) {
-    var text=text;
-    var modal = UIkit.modal("#msg_modal",{center: true, modal: false});
 
 
     modal.show();
@@ -538,6 +543,10 @@ function msg_call_close() {
 }
 
  
+
+function alertDismissed() {
+    // do something
+}
 
   </script>
   
