@@ -438,7 +438,8 @@ function call_end(call_no,company_no) {
    function(data){
      $("#mypage_modal").removeClass('active');
      $("#call_info_modal").removeClass('active');
-       window.plugins.spinnerDialog.show(null, "콜이 선정되었습니다.");
+     alert_msg("알림","콜이 선정되었습니다.")
+       
       }
       );
 
