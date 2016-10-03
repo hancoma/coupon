@@ -86,7 +86,7 @@ push.on('registration', function(data) {
 push.on('notification', function(data) {
   // alert(data.message);
   display_call_info(data.message);
-  window.plugins.spinnerDialog.show(null, data.message);
+  navigator.notification.alert(data.message)
  
    // display_call(data.message);
     
