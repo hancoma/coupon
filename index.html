@@ -477,19 +477,9 @@ $("#mypage_btn").click(
   }
   $("#call_btn").click(
 function() {
-  var modal = UIkit.modal("#msg_modal",{center: true, modal: false});
-
-if ( modal.isActive() ) {
-    modal.hide();
-} else {
-    modal.show();
-}
-   navigator.notification.alert(
-    '호출했습니다.',  // message
-    alertDismissed,         // callback
-    '알림',            // title
-    'Done'                  // buttonName
-);
+ 
+  alert_msg("알림","호출했습니다.");
+ 
   
   
   save_call();
@@ -544,9 +534,7 @@ function msg_call_close() {
 
  
 
-function alertDismissed() {
-    // do something
-}
+
 
   </script>
   
