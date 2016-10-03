@@ -86,16 +86,16 @@ push.on('registration', function(data) {
 push.on('notification', function(data) {
   // alert(data.message);
   display_call_info(data.message);
-  navigator.notification.alert(data.message)
+  alert_msg("알람",data.message);
  
-   // display_call(data.message);
+ 
     
    
 });
 
 push.on('error', function(e) {
     // e.message
-    console.log(e.message);
+    alert_msg("경고",e.message);
 });
 
 
