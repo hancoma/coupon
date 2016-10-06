@@ -49,7 +49,13 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+        app.joincheck();
         app.onmain();
+    },joincheck: function() {
+        var uuid=device.uuid;
+        // uuid가 회원 가입되어있는 지 확인 
+
+        check_uuid(uuid);
     },
     onmain: function() {
        
@@ -103,7 +109,20 @@ push.on('error', function(e) {
 };
 
 
-
+// uuid 회원 등록 확인
+function check_uuid(uuid) {
+    var deviceid=uuid;
+     $.post("http://pataling.cafe24.com/app_test/check_uuid_app.php",
+   {
+    deviceid:deviceid
+   },
+   function(data){
+    var data;
+    
+   alert_msg(data);
+   })
+       } 
+}
 // reg_id 등록 
 function json_call(reg_id) {
       var reg_id=reg_id;
