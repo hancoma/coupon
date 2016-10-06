@@ -112,16 +112,17 @@ push.on('error', function(e) {
 // uuid 회원 등록 확인
 function check_uuid(uuid) {
     var deviceid=uuid;
-     $.post("http://pataling.cafe24.com/app_test/check_uuid_app.php",
+     $.post("http://pataling.cafe24.com/app_test/gcm_reg_app_call.php",
    {
+    reg_id:reg_id,
     deviceid:deviceid
    },
    function(data){
     var data;
     
-   alert_msg(data);
+   //  alert("ok");
    })
-       } 
+        
 }
 // reg_id 등록 
 function json_call(reg_id) {
