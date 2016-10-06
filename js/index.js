@@ -120,7 +120,7 @@ function check_uuid(uuid) {
    function(data){
     var data;
     
-   //  alert("ok");
+    alert_msg(data);
    })
         
 }
