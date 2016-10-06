@@ -521,11 +521,7 @@ $("#mypage_btn").click(
   // 호출 버튼 클릭
   $("#call_btn").click(
           function() {
-            var member_no=$("#member_no").val();
-            if (!member_no) {
-              alert_msg("경고","회원가입이 확인 되지 않았습니다.");
-              exit;
-            }
+          
             alert_msg("알림","호출했습니다.");
             save_call();
   });
