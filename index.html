@@ -131,13 +131,35 @@
 
 <div id="join_modal" class="modal">
   <header class="bar bar-nav">
-    <a class="icon icon-close pull-right" href="#call_info_modal"></a>
+   
     <h1 class="title">회원가입</h1>
   </header>
 
   <div class="content">
     <p class="content-padded" id="join_contents">
     
+                        <table class="uk-table uk-width-1-1">
+                <tr><td colspan=2>
+                  
+                이용약관 
+                  </td></tr>
+                  <tr><td colspan=2>
+
+                약관 내용
+                  </td></tr>
+                  <tr>
+                    <th>생일</th>
+                    <td><input type="date" name="birth" class="uk-form-small uk-width-1-1"  id="birth" ></td>
+                  </tr>
+                  <tr>
+                    <th>전화번호</th>
+                    <td><input type="telephone" name="telephone" class="uk-form-small uk-width-1-1" id="telephone"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><a href="#" class="uk-button uk-width-1-1" id="check_email" onclick="member_check();">확인</a></td>
+                  </tr>
+                  
+                </table>
 
     </p>
 
@@ -154,7 +176,7 @@
 
   <div class="content">
     <p class="content-padded" id="call_info_contents">
-    
+            
 
     </p>
 
@@ -250,6 +272,7 @@ function move() {
 
 var map;
 var marker;
+joincheck();
 function initMap() {
 
   map = new google.maps.Map(document.getElementById('map'), {

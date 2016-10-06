@@ -49,13 +49,8 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-        app.joincheck();
+      
         app.onmain();
-    },joincheck: function() {
-        var uuid=device.uuid;
-        // uuid가 회원 가입되어있는 지 확인 
-
-        check_uuid(uuid);
     },
     onmain: function() {
        
@@ -109,18 +104,66 @@ push.on('error', function(e) {
 };
 
 
+function joincheck() {
+        var uuid=device.uuid;
+        // uuid가 회원 가입되어있는 지 확인 
+
+        check_uuid(uuid);
+    }
+
+function member_check() {
+    var uuid=device.uuid;
+    var telephone=$("#telephone").val();
+    var birth=$("#birth").val();
+    if (!telephone) {
+      alert_msg("경고","전화번호입력하세요.");
+      exit;
+    }
+    if (!birth) {
+      alert_msg("경고","생일을 입력하세요.");
+      exit;
+    }
+    member_save(uuid,telephone,birth);
+}
+// 회원 저장 부분
+function member_save (uuid,telephone,birth) {
+   var deviceid=uuid;
+   var telephone=telephone;
+   var birth=birth;
+     $.post("http://pataling.cafe24.com/app_test/member_save_app.php",
+   {
+   
+    deviceid:deviceid,
+    telephone:telephone,
+    birth:birth
+   },
+   function(data){
+    var data=data;
+        if (data=="yes") {
+          alert_msg("환영합니다.","회원가입을 축하합니다. ");
+    $("#join_modal").removeClass('active');
+        }
+        if (data=="no") {
+          alert_msg("경고","이미 가입되어있는 전화번호 입니다.");
+          exit;
+        }
+   })
+
+ 
+}
 // uuid 회원 등록 확인
 function check_uuid(uuid) {
     var deviceid=uuid;
      $.post("http://pataling.cafe24.com/app_test/check_uuid_app.php",
    {
-    reg_id:reg_id,
+   
     deviceid:deviceid
    },
    function(data){
-    var data;
-    
-    alert_msg(data);
+    var data=data;
+        if (data=="no") {
+          member_join();
+        }
    })
         
 }
@@ -158,6 +201,10 @@ function alert_msg(title,msg) {
 );
 }
 
+function member_join() {
+    $("#join_modal").addClass('active');
+
+}
 
  
 
