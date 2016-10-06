@@ -153,7 +153,7 @@ function member_save (uuid,telephone,birth) {
 }
 // uuid 회원 등록 확인
 function check_uuid(uuid) {
-    var deviceid=uuid;
+    var deviceid=device.uuid;
      $.post("http://pataling.cafe24.com/app_test/check_uuid_app.php",
    {
    
@@ -161,8 +161,11 @@ function check_uuid(uuid) {
    },
    function(data){
     var data=data;
+
         if (data=="no") {
           member_join();
+        } else {
+          $("#member_no").val(data);
         }
    })
         
