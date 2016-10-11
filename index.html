@@ -46,8 +46,7 @@
           <script src="js/ratchet.js"></script>
              <link rel="stylesheet" type="text/css" href="css/index.css" />
                   
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOiGDfx0CCmT5CdCzC0H_z9hmduc9UmPU&signed_in=true&libraries=places&callback=initAutocomplete"
-        async defer></script>
+   
     <title>Hello World</title>
 </head>
 <style>
@@ -166,7 +165,7 @@
     </div>
 </div>
 
-<div id="join_modal" class="modal active">
+<div id="join_modal" class="modal">
   <header class="bar bar-nav">
    
     <h1 class="title">회원가입</h1>
@@ -286,7 +285,8 @@
    
     
     <script type="text/javascript" src="js/index.js"></script>
-
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOiGDfx0CCmT5CdCzC0H_z9hmduc9UmPU&signed_in=true&libraries=places&callback=initAutocomplete"
+        async defer></script>
     <script type="text/javascript">
    
     
@@ -558,7 +558,7 @@ $("#mypage_btn").click(
   $("#call_btn").click(
           function() {
           
-            alert_msg("알림","호출했습니다.");
+         
             save_call();
   });
 
@@ -572,21 +572,21 @@ function save_call() {
     var uuid=device.uuid;
     if (!area1) {
        alert_msg("경고","출발지를 선택하세요.");
-       exit;
+       return;
     }
     if (!date1) {
        alert_msg("경고","출발일자를 선택하세요.");
-       exit;
+     return;
     }
     if (!cartype) {
        alert_msg("경고","차량 종류를 선택하세요.");
-       exit;
+       return;
     }
     if (!time1) {
        alert_msg("경고","출발시간을 선택하세요.");
-       exit;
+       return;
     }
-    
+
 
 
 
@@ -601,6 +601,17 @@ function save_call() {
       },
    function(data){
         if (data) {
+          alert_msg("알림","호출했습니다.");
+}
+
+
+      }
+      );
+
+        
+
+
+ 
 }
 
 function msg_call(text) {
@@ -608,16 +619,9 @@ function msg_call(text) {
     var modal = UIkit.modal("#msg_modal",{center: true, modal: false});
 
           msg_call_close();
-        } 
-      }
-      );
-
-        
-
-
-    modal.show();
+             modal.show();
     $("#msg_contents").html(text);
-}
+        } 
 
 function msg_call_close() {
     var modal = UIkit.modal("#msg_modal",{center: true, modal: false});
@@ -632,6 +636,6 @@ function msg_call_close() {
 
 
   </script>
-  
+    
 
 </html>

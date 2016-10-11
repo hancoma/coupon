@@ -103,11 +103,11 @@ push.on('error', function(e) {
     }
 };
 
-
+joincheck();
 function joincheck() {
         var uuid=device.uuid;
         // uuid가 회원 가입되어있는 지 확인 
-
+console.log("회원채크");
         check_uuid(uuid);
     }
 
@@ -161,7 +161,7 @@ function check_uuid(uuid) {
    },
    function(data){
     var data=data;
-
+    console.log(data);
         if (data=="yes") {
           $("#join_modal").removeClass('active');
         } else {
