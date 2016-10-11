@@ -71,9 +71,45 @@
   <li class="table-view-cell">차량선택 <input name="cartype" id="cartype" readonly type=text style="width:70%; border:1px; margin:0px; " onclick="open_cartype_check();"> <a class="btn" onclick="open_cartype_check();">차종선택</button></a></li>
   
   <li class="table-view-cell">출발일 <input name="date1" type=date id="date1" style="width:70%; border:1px #dedede solid; margin:0px; "></li>
-  <li class="table-view-cell">출발시간 <input id="time1" name="time1" type="range"  min="1" max="24" value="1" style="width:70%; border:0px; margin:0px; "><button class="btn btn-primary" id="time1_num">1시</button></li>
+  <li class="table-view-cell">출발시간  <select name="time1" id="time1" style="width:70%; border:0px; margin:0px; ">
+  <option value=""></option>
+  <option value="1">오전1시</option>
+  <option value="2">오전2시</option>
+  <option value="3">오전3시</option>
+  <option value="4">오전4시</option>
+  <option value="5">오전5시</option>
+  <option value="6">오전5시</option>
+  <option value="7">오전7시</option>
+  <option value="8">오전7시</option>
+  <option value="9">오전9시</option>
+  <option value="10">오전10시</option>
+  <option value="11">오전11시</option>
+  <option value="12">오전12시</option>
+  <option value="13">오후1시</option>
+  <option value="14">오후2시</option>
+  <option value="15">오후3시</option>
+  <option value="16">오후4시</option>
+  <option value="17">오후5시</option>
+  <option value="18">오후5시</option>
+  <option value="19">오후7시</option>
+  <option value="20">오후7시</option>
+  <option value="21">오후9시</option>
+  <option value="22">오후10시</option>
+  <option value="23">오후11시</option>
+  <option value="24">오후12시</option>
+
+  </select>
+   <button class="btn btn-primary" id="time1_num">1시</button></li>
  
-  <li class="table-view-cell">렌트대수 <input id="car1" name="car1" type="range"  min="1" max="10" value="1" style="width:70%; border:0px; margin:0px; "><button class="btn btn-negative" id="car1_num">1대</button></li>
+  <li class="table-view-cell">렌트대수 
+  <select name="car1" id="car1"  style="width:70%; border:0px; margin:0px; ">
+  <option value="1">1대</option>
+  <option value="2">2대</option>
+  <option value="3">3대</option>
+  <option value="4">4대</option>
+  <option value="5">5대</option>
+  </select>
+  <button class="btn btn-negative" id="car1_num">1대</button></li>
 
 </ul>
 </div>

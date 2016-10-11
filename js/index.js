@@ -162,10 +162,11 @@ function check_uuid(uuid) {
    function(data){
     var data=data;
 
-        if (data=="no") {
-          member_join();
+        if (data=="yes") {
+         $("#member_no").val(data);
         } else {
-          $("#member_no").val(data);
+           member_join();
+          
         }
    })
         
