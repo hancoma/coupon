@@ -166,7 +166,7 @@
     </div>
 </div>
 
-<div id="join_modal" class="modal">
+<div id="join_modal" class="modal active">
   <header class="bar bar-nav">
    
     <h1 class="title">회원가입</h1>
@@ -570,6 +570,24 @@ function save_call() {
     var date1=$("#date1").val();
     var time1=$("#time1").val();
     var uuid=device.uuid;
+    if (!area1) {
+       alert_msg("경고","출발지를 선택하세요.");
+       exit;
+    }
+    if (!date1) {
+       alert_msg("경고","출발일자를 선택하세요.");
+       exit;
+    }
+    if (!cartype) {
+       alert_msg("경고","차량 종류를 선택하세요.");
+       exit;
+    }
+    if (!time1) {
+       alert_msg("경고","출발시간을 선택하세요.");
+       exit;
+    }
+    
+
 
 
      $.post("http://pataling.cafe24.com/app_test/call_save.php",

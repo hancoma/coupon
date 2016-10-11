@@ -163,7 +163,7 @@ function check_uuid(uuid) {
     var data=data;
 
         if (data=="yes") {
-         $("#member_no").val(data);
+          $("#join_modal").removeClass('active');
         } else {
            member_join();
           
