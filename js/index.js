@@ -19,9 +19,12 @@
  
 
 var push;
+   
+   
 var app = {
     // Application Constructor
     initialize: function() {
+
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -37,6 +40,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
@@ -160,6 +164,8 @@ function check_uuid(uuid) {
     deviceid:deviceid
    },
    function(data){
+ 
+        $("#body").show();
     var data=data;
     console.log(data);
         if (data=="yes") {
