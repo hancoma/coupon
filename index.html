@@ -46,8 +46,10 @@
           <script src="js/uikit.js"></script>
           <script src="js/ratchet.js"></script>
              <link rel="stylesheet" type="text/css" href="css/index.css" />
-                  
-   
+                    <script type="text/javascript" src="cordova.js"></script>
+   <script>
+     navigator.splashscreen.show();
+     </script>
     <title>Hello World</title>
 </head>
 <style>
@@ -56,7 +58,7 @@
   }
 </style>
 
-<body onload="initMap();" style=" overflow:scroll; display:none;" id="body" >
+<body onload="initMap();" style=" overflow:scroll; " id="body" >
    <header class="bar bar-nav">
   <a class="icon icon-bars pull-left" id="left_btn" data-uk-offcanvas="{target:'#offcanvas-1'}"></a>
   <a class="icon icon-gear pull-right" id="right_btn" data-uk-offcanvas="{target:'#offcanvas-2'}"></a>
@@ -282,7 +284,7 @@
 </div>
   </div>
 </div>
-    <script type="text/javascript" src="cordova.js"></script>
+  
 
     <script type="text/javascript" charset="utf-8" src="js/PushNotification.js"></script>
    
@@ -291,10 +293,10 @@
    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOiGDfx0CCmT5CdCzC0H_z9hmduc9UmPU&signed_in=true&libraries=places&callback=initAutocomplete"
         async defer></script>
     <script type="text/javascript">
-  navigator.splashscreen.show();
+
 setTimeout(function() {
     navigator.splashscreen.hide();
-}, 5000);
+}, 3000);
         app.initialize();
     </script>
 </body>

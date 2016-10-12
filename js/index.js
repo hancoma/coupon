@@ -165,7 +165,7 @@ function check_uuid(uuid) {
    },
    function(data){
  
-        $("#body").show();
+       
     var data=data;
     console.log(data);
         if (data=="yes") {
