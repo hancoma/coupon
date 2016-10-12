@@ -100,7 +100,7 @@
   <option value="24">오후12시</option>
 
   </select>
-   <button class="btn btn-primary" id="time1_num">1시</button></li>
+  </li>
  
   <li class="table-view-cell">렌트대수 
   <select name="car1" id="car1"  style="width:70%; border:0px; margin:0px; ">
@@ -351,12 +351,7 @@ $("#car1").change(
     $("#car1_num").html(car1+"대");
   }
   );
-$("#time1").change(
-  function() {
-    var time1=$("#time1").val();
-    $("#time1_num").html(time1+"시");
-  }
-  );
+
 
     </script>
    <script>
