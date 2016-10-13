@@ -170,6 +170,7 @@ function check_uuid(uuid) {
     console.log(data);
         if (data=="yes") {
           window.localStorage.setItem("key", "yes");
+          alert("회원확인이 되었습니다.");
           $("#join_modal").removeClass('active');
         } else {
            member_join();
