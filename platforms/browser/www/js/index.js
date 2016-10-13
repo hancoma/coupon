@@ -146,6 +146,7 @@ function member_save (uuid,telephone,birth) {
         if (data=="yes") {
           alert_msg("환영합니다.","회원가입을 축하합니다. ");
     $("#join_modal").removeClass('active');
+     window.localStorage.setItem("key", "yes");
         }
         if (data=="no") {
           alert_msg("경고","이미 가입되어있는 전화번호 입니다.");
@@ -173,6 +174,8 @@ function check_uuid(uuid) {
           alert("회원확인이 되었습니다.");
           $("#join_modal").removeClass('active');
         } else {
+           alert("회원확인이 되지 않으셨습니다. 회원가입해주세요.");
+            window.localStorage.removeItem("key");
            member_join();
           
         }

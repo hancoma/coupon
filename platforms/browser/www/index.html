@@ -169,7 +169,7 @@
     </div>
 </div>
 
-<div id="join_modal" class="modal active">
+<div id="join_modal" class="modal">
   <header class="bar bar-nav">
    
     <h1 class="title">회원가입</h1>
@@ -293,6 +293,10 @@
    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOiGDfx0CCmT5CdCzC0H_z9hmduc9UmPU&signed_in=true&libraries=places&callback=initAutocomplete"
         async defer></script>
     <script type="text/javascript">
+    setTimeout(function() {
+    navigator.splashscreen.hide();
+}, 3000);
+    check_join();
 var keyName = window.localStorage.key(0);
 var value = window.localStorage.getItem("key");
 if (value=='yes') {
@@ -300,15 +304,39 @@ if (value=='yes') {
  } else {
   $("#join_modal").addClass('active');
  }
-setTimeout(function() {
-    navigator.splashscreen.hide();
-}, 3000);
+
         app.initialize();
     </script>
 </body>
 
 
 <script>
+// uuid 회원 등록 확인
+function check_join() {
+    var deviceid=device.uuid;
+     $.post("http://pataling.cafe24.com/app_test/check_uuid_app.php",
+   {
+   
+    deviceid:deviceid
+   },
+   function(data){
+ 
+       
+    var data=data;
+    console.log(data);
+        if (data=="yes") {
+          window.localStorage.setItem("key", "yes");
+          alert("회원확인이 되었습니다.");
+         
+        } else {
+           alert("회원확인이 되지 않으셨습니다. 회원가입해주세요.");
+            window.localStorage.removeItem("key");
+        
+          
+        }
+   })
+        
+}
 
 function move() {
   
