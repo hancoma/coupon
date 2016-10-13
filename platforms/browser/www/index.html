@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+ <script type="text/javascript" src="js/jquery.min.js"></script>
+ 
+      <link rel="stylesheet" type="text/css" href="css/uikit.min.css">
+       <link href="css/ratchet.min.css" rel="stylesheet">
+
+          <script src="js/uikit.js"></script>
+          <script src="js/ratchet.js"></script>
+             <link rel="stylesheet" type="text/css" href="css/index.css" />
+                    <script type="text/javascript" src="cordova.js"></script>
+   <script>
+     navigator.splashscreen.show();
+     </script>
+    <title>Hello World</title>
+</head>
+<style>
+  #map {
+    position: relative;
+  }
+</style>
+
+<body onload="initMap();" style=" overflow:scroll; " id="body" >
+   <header class="bar bar-nav">
+  <a class="icon icon-bars pull-left" id="left_btn" data-uk-offcanvas="{target:'#offcanvas-1'}"></a>
+  <a class="icon icon-gear pull-right" id="right_btn" data-uk-offcanvas="{target:'#offcanvas-2'}"></a>
+  <h1 class="title">내차가 없을때 RentPlay</h1>
+</header>
+
+<div style="width:100%; height:100%;  overflow:scroll;">
+<div id="map"  class="bar bar-standard bar-header-secondary" style="height:150px; width:100%; float:left; position:"></div>
+<div style="width:100%; height:80%;  overflow:hidden;">
+
+<ul class="table-view" style="margin-top:45px;">
+  <li class="table-view-cell">출발지 <input name="member_no" id="member_no" type="hidden" value=""><input name="area1" id="area1" readonly type=text style="width:70%; border:0px; margin:0px; " onclick="open_area_check();"> <a class="btn" href="#area_check">위치선택</button></a></li>
+  <li class="table-view-cell">차량선택 <input name="cartype" id="cartype" readonly type=text style="width:70%; border:1px; margin:0px; " onclick="open_cartype_check();"> <a class="btn" onclick="open_cartype_check();">차종선택</button></a></li>
+  
+  <li class="table-view-cell">출발일 <input name="date1" type=date id="date1" style="width:70%; border:1px #dedede solid; margin:0px; "></li>
+  <li class="table-view-cell">출발시간  <select name="time1" id="time1" style="width:70%; border:0px; margin:0px; ">
+  <option value="">출발시간선택</option>
+  <option value="1">오전1시</option>
+  <option value="2">오전2시</option>
+  <option value="3">오전3시</option>
+  <option value="4">오전4시</option>
+  <option value="5">오전5시</option>
+  <option value="6">오전5시</option>
+  <option value="7">오전7시</option>
+  <option value="8">오전7시</option>
+  <option value="9">오전9시</option>
+  <option value="10">오전10시</option>
+  <option value="11">오전11시</option>
+  <option value="12">오전12시</option>
+  <option value="13">오후1시</option>
+  <option value="14">오후2시</option>
+  <option value="15">오후3시</option>
+  <option value="16">오후4시</option>
+  <option value="17">오후5시</option>
+  <option value="18">오후5시</option>
+  <option value="19">오후7시</option>
+  <option value="20">오후7시</option>
+  <option value="21">오후9시</option>
+  <option value="22">오후10시</option>
+  <option value="23">오후11시</option>
+  <option value="24">오후12시</option>
+
+  </select>
+  </li>
+ 
+  <li class="table-view-cell">렌트대수 
+  <select name="car1" id="car1"  style="width:70%; border:0px; margin:0px; ">
+  <option value="1">1대</option>
+  <option value="2">2대</option>
+  <option value="3">3대</option>
+  <option value="4">4대</option>
+  <option value="5">5대</option>
+  </select>
+  <button class="btn btn-negative" id="car1_num">1대</button></li>
+
+</ul>
+</div>
+
+
+<div class="uk-grid" style="width:100%; display:none; ">
+
+    <div class="uk-width-1-1" id="app_body">
+  
+     <div id="deviceready" class="blink" >
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+        
+       
+        
+      
+        
+     
+        </div>
+
+       
+    </div>
+    <div class="bar bar-standard bar-footer-secondary" style="margin-bottom:10px;">
+  <button class="btn btn-block btn-primary" id="call_btn" >렌트카 호출</button>
+</div>
+
+<nav class="bar bar-tab">
+  <a class="tab-item active" href="#" id="home_btn" onclick="main_display();">
+    <span class="icon icon-home"></span>
+    <span class="tab-label" >Home</span>
+  </a>
+  <a class="tab-item" href="#" onclick="open_myinfo();">
+    <span class="icon icon-person"></span>
+    <span class="tab-label">나의정보</span>
+  </a>
+  <a class="tab-item" href="#" onclick="open_pick();">
+    <span class="icon icon-star-filled"></span>
+    <span class="tab-label">즐겨찾기</span>
+  </a>
+  <a class="tab-item" href="#" onclick="open_mypage();">
+    <span class="icon icon-search"></span>
+    <span class="tab-label">예약내역</span>
+  </a>
+  <a class="tab-item" href="#">
+    <span class="icon icon-gear"></span>
+    <span class="tab-label">설정</span>
+  </a>
+</nav>
+</div>
+<div class="uk-modal" id="msg_modal" data-uk-modal="{center:true}">
+    <div class="uk-modal-dialog">
+        <div class="uk-modal-spinner" id="msg_contents">...</div>
+    </div>
+</div>
+
+<div id="join_modal" class="modal">
+  <header class="bar bar-nav">
+   
+    <h1 class="title">회원가입</h1>
+  </header>
+
+  <div class="content">
+    <p class="content-padded" id="join_contents">
+    
+                        <table class="uk-table uk-width-1-1">
+                <tr><td colspan=2>
+                  
+                이용약관 
+                  </td></tr>
+                  <tr><td colspan=2>
+
+                약관 내용
+                  </td></tr>
+                  <tr>
+                    <th>생일</th>
+                    <td><input type="date" name="birth" class="uk-form-small uk-width-1-1"  id="birth" ></td>
+                  </tr>
+                  <tr>
+                    <th>전화번호</th>
+                    <td><input type="telephone" name="telephone" class="uk-form-small uk-width-1-1" id="telephone"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><a href="#" class="uk-button uk-width-1-1" id="check_email" onclick="member_check();">확인</a></td>
+                  </tr>
+                  
+                </table>
+
+    </p>
+
+    </div>
+  
+    </div>
+
+
+<div id="call_info_modal" class="modal">
+  <header class="bar bar-nav">
+    <a class="icon icon-close pull-right" href="#call_info_modal"></a>
+    <h1 class="title">예약내용</h1>
+  </header>
+
+  <div class="content">
+    <p class="content-padded" id="call_info_contents">
+            
+
+    </p>
+
+    </div>
+  
+    </div>
+
+<div id="mypage_modal" class="modal">
+  <header class="bar bar-nav">
+    <a class="icon icon-close pull-right" href="#mypage_modal"></a>
+    <h1 class="title">호출정보</h1>
+  </header>
+
+  <div class="content">
+    <p class="content-padded" id="mypage_contents">
+    
+
+    </p>
+
+    </div>
+    <div class="bar bar-standard bar-footer-secondary">
+  <button class="btn btn-block btn-primary" id="mypage_btn" >닫기</button>
+</div>
+    </div>
+
+
+<div id="cartype_check" class="modal">
+  <header class="bar bar-nav">
+    <a class="icon icon-close pull-right" href="#cartype_check"></a>
+    <h1 class="title">차종선택</h1>
+  </header>
+
+  <div class="content">
+    <p class="content-padded">
+        <ul class="table-view">
+  <li class="table-view-cell">승합차 <button class="btn" onclick="select_car('승합차');">선택</button></li>
+  <li class="table-view-cell">대형(그렌즈급) <button class="btn" onclick="select_car('대형');">선택</button></li>
+  <li class="table-view-cell">중형(소나타급) <button class="btn" onclick="select_car('중형');">선택</button></li>
+  <li class="table-view-cell">준중형(아반테급) <button class="btn" onclick="select_car('준중형');">선택</button></li>
+  <li class="table-view-cell">소형(액센트급) <button class="btn" onclick="select_car('소형');">선택</button></li>
+  <li class="table-view-cell">경차(마티즈,모닝) <button class="btn" onclick="select_car('경차');">선택</button></li>
+
+</ul>
+
+    </p>
+    </div>
+    </div>
+<div id="area_check" class="modal">
+  <header class="bar bar-nav">
+    <a class="icon icon-close pull-right" href="#area_check"></a>
+    <h1 class="title">출발지 검색</h1>
+  </header>
+
+  <div class="content">
+    <p class="content-padded">
+   <div id="locationField">
+      <input id="autocomplete" placeholder="출발지를 선택하세요."
+             onFocus="geolocate()" type="text"></input>
+    </div>
+
+    
+    </p>
+<div class="bar bar-standard bar-footer-secondary">
+  <button class="btn btn-block btn-primary" id="area_check_btn" >선택완료</button>
+</div>
+  </div>
+</div>
+  
+
+    <script type="text/javascript" charset="utf-8" src="js/PushNotification.js"></script>
+   
+    
+    <script type="text/javascript" src="js/index.js"></script>
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOiGDfx0CCmT5CdCzC0H_z9hmduc9UmPU&signed_in=true&libraries=places&callback=initAutocomplete"
+        async defer></script>
+    <script type="text/javascript">
+
+setTimeout(function() {
+    navigator.splashscreen.hide();
+}, 3000);
+        app.initialize();
+    </script>
+</body>
+
+
+<script>
+
+function move() {
+  
+    var ref = cordova.InAppBrowser.open('call_rentcar.html', '_self', 'location=no');
+    
+}
+
+</script>
+
+<script>
+
+var map;
+var marker;
+joincheck();
+function initMap() {
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom:15
+  });
+  navigator.geolocation.getCurrentPosition(success, error);
+}
+
+ function success(position) {
+ 
+   
+var geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      map.setCenter(geolocation);
+      var marker = new google.maps.Marker({
+        map: map,
+        position: geolocation
+      });
+
+  
+  };
+
+  function error() {
+  alert("현위치 검색중");
+  };
+
+
+$("#car1").change(
+  function() {
+    var car1=$("#car1").val();
+    $("#car1_num").html(car1+"대");
+  }
+  );
+
+
+    </script>
+   <script>
+// This example displays an address form, using the autocomplete feature
+// of the Google Places API to help users fill in the information.
+
+var placeSearch, autocomplete;
+var componentForm = {
+  street_number: 'short_name',
+  route: 'long_name',
+  locality: 'long_name',
+  administrative_area_level_1: 'short_name',
+  country: 'long_name',
+  postal_code: 'short_name'
+};
+
+function initAutocomplete() {
+  // Create the autocomplete object, restricting the search to geographical
+  // location types.
+  autocomplete = new google.maps.places.Autocomplete(
+      /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+      {types: ['geocode']});
+ var geocoder = new google.maps.Geocoder();
+  // When the user selects an address from the dropdown, populate the address
+  // fields in the form.
+  autocomplete.addListener('place_changed', fillInAddress);
+}
+
+// [START region_fillform]
+function fillInAddress() {
+  // Get the place details from the autocomplete object.
+  var place = autocomplete.getPlace();
+   var geocoder = new google.maps.Geocoder();
+geocodeAddress(geocoder, map);
+   // 지도 마크 
+
+  // Get each component of the address from the place details
+  // and fill the corresponding field on the form.
+ 
+}
+// [END region_fillform]
+
+// [START region_geolocation]
+// Bias the autocomplete object to the user's geographical location,
+// as supplied by the browser's 'navigator.geolocation' object.
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      var circle = new google.maps.Circle({
+        center: geolocation,
+        radius: position.coords.accuracy
+      });
+
+      autocomplete.setBounds(circle.getBounds());
+
+    });
+  }
+}
+// [END region_geolocation]
+
+function geocodeAddress(geocoder, resultsMap) {
+  var address = document.getElementById('autocomplete').value;
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      resultsMap.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location,
+        zoom: 2
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+
+$("#area_check_btn").click(
+  function() {
+    var area1=$("#autocomplete").val();
+    $("#area1").val(area1);
+    $("#area_check").removeClass('active');
+
+  })
+
+  function open_area_check() {
+   $("#area_check").addClass('active');
+
+
+  }
+    function open_cartype_check() {
+   $("#cartype_check").addClass('active');
+
+
+  }
+
+
+  function open_mypage() {
+    var uuid=device.uuid;
+   $("#mypage_modal").addClass('active');
+     $.post("http://pataling.cafe24.com/app_test/mypage.php",
+   {
+    uuid:uuid
+      },
+   function(data){
+        $("#mypage_contents").html(data);
+      }
+      );
+  }
+
+function display_call_info(message) {
+    var uuid=device.uuid;
+    var message=message;
+    console.log(message);
+    var msg2=message.split('번콜');
+    var no=msg2[0];
+    console.log(no);
+       $("#mypage_modal").removeClass('active');
+     $("#call_info_modal").addClass('active');
+
+     $.post("http://pataling.cafe24.com/app_test/call_info_no.php",
+   {
+    uuid:uuid,
+    no:no
+      },
+   function(data){
+       $("#call_info_contents").html(data);
+      }
+      );
+  }
+
+function display_company_info(no,call_no) {
+  var no=no;
+  var call_no=call_no;
+  var uuid=device.uuid;
+     $.post("http://pataling.cafe24.com/app_test/company_info.php",
+   {
+    uuid:uuid,
+    no:no,
+    call_no:call_no
+      },
+   function(data){
+       $("#call_info_contents").html(data);
+      }
+      );
+
+}
+
+function call_end(call_no,company_no) {
+  var company_no=company_no;
+  var call_no=call_no;
+  var uuid=device.uuid;
+     $.post("http://pataling.cafe24.com/app_test/call_end.php",
+   {
+    uuid:uuid,
+    company_no:company_no,
+    call_no:call_no
+      },
+   function(data){
+     $("#mypage_modal").removeClass('active');
+     $("#call_info_modal").removeClass('active');
+     alert_msg("알림","콜이 선정되었습니다.")
+       
+      }
+      );
+
+}
+
+
+
+
+  function call_info_modal() {
+    var uuid=device.uuid;
+   $("#mypage_modal").addClass('active');
+     $.post("http://pataling.cafe24.com/app_test/mypage.php",
+   {
+    uuid:uuid
+      },
+   function(data){
+        $("#mypage_contents").html(data);
+      }
+      );
+  }
+
+
+
+$("#mypage_btn").click(
+  function() {
+     $("#mypage_modal").removeClass('active');
+  })
+
+
+  function select_car(cartype) {
+    var cartype=cartype
+    $("#cartype").val(cartype);
+  $("#cartype_check").removeClass('active');
+
+    
+  }
+  // 호출 버튼 클릭
+  $("#call_btn").click(
+          function() {
+          
+         
+            save_call();
+  });
+
+function save_call() {
+  
+    var car1=$("#car1").val();
+    var area1=$("#area1").val();
+    var cartype=$("#cartype").val();
+    var date1=$("#date1").val();
+    var time1=$("#time1").val();
+    var uuid=device.uuid;
+    if (!area1) {
+       alert_msg("경고","출발지를 선택하세요.");
+       return;
+    }
+    if (!date1) {
+       alert_msg("경고","출발일자를 선택하세요.");
+     return;
+    }
+    if (!cartype) {
+       alert_msg("경고","차량 종류를 선택하세요.");
+       return;
+    }
+    if (!time1) {
+       alert_msg("경고","출발시간을 선택하세요.");
+       return;
+    }
+
+
+
+
+     $.post("http://pataling.cafe24.com/app_test/call_save.php",
+   {
+    car1:car1,
+    area1:area1,
+    cartype:cartype,
+    date1:date1,
+    time1:time1,
+    uuid:uuid
+      },
+   function(data){
+        if (data) {
+          alert_msg("알림","호출했습니다.");
+}
+
+
+      }
+      );
+
+        
+
+
+ 
+}
+
+function msg_call(text) {
+    var text=text;
+    var modal = UIkit.modal("#msg_modal",{center: true, modal: false});
+
+          msg_call_close();
+             modal.show();
+    $("#msg_contents").html(text);
+        } 
+
+function msg_call_close() {
+    var modal = UIkit.modal("#msg_modal",{center: true, modal: false});
+
+
+    modal.hide();
+    $("#msg_contents").html(text);
+}
+
+ 
+
+
+
+  </script>
+    
+
+</html>
