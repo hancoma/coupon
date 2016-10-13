@@ -171,10 +171,10 @@ function check_uuid(uuid) {
     console.log(data);
         if (data=="yes") {
           window.localStorage.setItem("key", "yes");
-          alert("회원확인이 되었습니다.");
+          alert_msg("확인","회원확인이 되었습니다.");
           $("#join_modal").removeClass('active');
         } else {
-           alert("회원확인이 되지 않으셨습니다. 회원가입해주세요.");
+           alert_msg("알림","회원확인이 되지 않으셨습니다. 회원가입해주세요.");
             window.localStorage.removeItem("key");
            member_join();
           
@@ -217,7 +217,7 @@ function alert_msg(title,msg) {
 }
 
 function member_join() {
-    $("#join_modal").addClass('active');
+ 
 
 }
 
