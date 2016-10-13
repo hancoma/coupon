@@ -169,6 +169,7 @@ function check_uuid(uuid) {
     var data=data;
     console.log(data);
         if (data=="yes") {
+          window.localStorage.setItem("key", "yes");
           $("#join_modal").removeClass('active');
         } else {
            member_join();

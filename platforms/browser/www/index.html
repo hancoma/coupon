@@ -293,7 +293,13 @@
    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOiGDfx0CCmT5CdCzC0H_z9hmduc9UmPU&signed_in=true&libraries=places&callback=initAutocomplete"
         async defer></script>
     <script type="text/javascript">
-
+var keyName = window.localStorage.key(0);
+var value = window.localStorage.getItem("key");
+if (value=='yes') {
+   $("#join_modal").removeClass('active');
+ } else {
+  $("#join_modal").addClass('active');
+ }
 setTimeout(function() {
     navigator.splashscreen.hide();
 }, 3000);
