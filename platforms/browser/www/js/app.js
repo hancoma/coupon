@@ -64,7 +64,26 @@ var app = {
 };
 
 function startapp() {
-   location.replace('start.html') ;
+    var deviceid=device.uuid;
+     $.post("http://pataling.cafe24.com/app_test/check_uuid_app.php",
+   {
+   
+    deviceid:deviceid
+   },
+   function(data){
+ 
+       
+    var data=data;
+    console.log(data);
+        if (data=="yes") {
+          location.replace('start.html') ;
+        } else {
+           alert_msg("알림","회원확인이 되지 않으셨습니다. 회원가입해주세요.");
+           location.replace('join.html') ;
+          
+        }
+   })
+   
 }
 
 
