@@ -51,7 +51,12 @@ var app = {
         app.onmain();
     },
     onmain: function() {
-       setTimeout('startapp()', 2000);
+
+      setTimeout(function() {
+      startapp();
+      }, 2000);
+
+     
 
     
 
