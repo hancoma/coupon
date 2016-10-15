@@ -65,7 +65,7 @@ function member_save () {
    var deviceid=device.uuid;
    var telephone=$("#telephone").val();
    var birth=$("#birth").val();
-   var contents=$("#contents").val();
+  
    if (!birth) {
     alert_msg("경고","생일을 선택해주세요.");
     exit;
@@ -81,8 +81,7 @@ function member_save () {
    
     deviceid:deviceid,
     telephone:telephone,
-    birth:birth,
-    contents:contents
+    birth:birth
    },
    function(data){
     var data=data;

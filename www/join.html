@@ -73,8 +73,8 @@
  
   <input placeholder="생년월일을 정확히 입력해주세요." name="birth" class="textbox-n" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="birth">
   <input type="text" id="telephone" name="telephone" placeholder="전화번호를 입력해주세요.">
-  <textarea rows="5"  placeholder="기타 의견을 적어 주세요." id="contents" name="contents"></textarea>
  
+ <a href="#myModalexample" class="btn btn-block  btn-primary" >약관보기</a>
 </form>
 
 
@@ -88,7 +88,19 @@
 <div class="bar bar-standard bar-footer-secondary">
 <button class="btn btn-positive btn-block" id="join_btn" onclick="member_save()">가입하기</button>
 </div>
+<div id="myModalexample" class="modal">
+  <header class="bar bar-nav">
+    <a class="icon icon-close pull-right" href="#myModalexample"></a>
+    <h1 class="title">약관보기</h1>
+  </header>
 
+  <div class="content">
+    <p class="content-padded">약관내용</p>
+  </div>
+  <div class="bar bar-standard bar-footer-secondary">
+   <a href="#myModalexample" class="btn btn-block  btn-primary" >약관동의</a>
+  </div>
+</div>
 
 
   
