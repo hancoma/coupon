@@ -101,16 +101,8 @@
 
   </select>
   </li>
- 
-  <li class="table-view-cell">렌트대수 
-  <select name="car1" id="car1"  style="width:70%; border:0px; margin:0px; ">
-  <option value="1">1대</option>
-  <option value="2">2대</option>
-  <option value="3">3대</option>
-  <option value="4">4대</option>
-  <option value="5">5대</option>
-  </select>
-  <button class="btn btn-negative" id="car1_num">1대</button></li>
+ <li class="table-view-cell">추가내용 <input name="content" type=text id="content" style="width:70%; border:0px #dedede solid; margin:0px; "></li>
+  
 
 </ul>
 </div>
@@ -523,11 +515,12 @@ $("#mypage_btn").click(
 
 function save_call() {
   
-    var car1=$("#car1").val();
+   
     var area1=$("#area1").val();
     var cartype=$("#cartype").val();
     var date1=$("#date1").val();
     var time1=$("#time1").val();
+    var content=$("#content").val();
     var uuid=device.uuid;
     if (!area1) {
        alert_msg("경고","출발지를 선택하세요.");
@@ -551,12 +544,13 @@ function save_call() {
 
      $.post("http://pataling.cafe24.com/app_test/call_save.php",
    {
-    car1:car1,
+  
     area1:area1,
     cartype:cartype,
     date1:date1,
     time1:time1,
-    uuid:uuid
+    uuid:uuid,
+    content:content
       },
    function(data){
         if (data) {
