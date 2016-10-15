@@ -101,7 +101,7 @@
 
   </select>
   </li>
- <li class="table-view-cell">추가내용 <input name="content" type=text id="content" style="width:70%; border:0px #dedede solid; margin:0px; "></li>
+ <li class="table-view-cell">추가내용 <input name="contents" type=text id="contents" style="width:70%; border:0px #dedede solid; margin:0px; "></li>
   
 
 </ul>
@@ -520,7 +520,7 @@ function save_call() {
     var cartype=$("#cartype").val();
     var date1=$("#date1").val();
     var time1=$("#time1").val();
-    var content=$("#content").val();
+    var contents=$("#contents").val();
     var uuid=device.uuid;
     if (!area1) {
        alert_msg("경고","출발지를 선택하세요.");
@@ -549,8 +549,9 @@ function save_call() {
     cartype:cartype,
     date1:date1,
     time1:time1,
+     contents:contents,
     uuid:uuid,
-    content:content
+
       },
    function(data){
         if (data) {
