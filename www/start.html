@@ -167,43 +167,7 @@
     </div>
 </div>
 
-<div id="join_modal" class="modal active">
-  <header class="bar bar-nav">
-     <a class="icon icon-close pull-right" href="#join_modal"></a>
-    <h1 class="title">회원가입</h1>
-  </header>
 
-  <div class="content">
-    <p class="content-padded" id="join_contents">
-    
-                        <table class="uk-table uk-width-1-1">
-                <tr><td colspan=2>
-                  
-                이용약관 
-                  </td></tr>
-                  <tr><td colspan=2>
-
-                약관 내용
-                  </td></tr>
-                  <tr>
-                    <th>생일</th>
-                    <td><input type="date" name="birth" class="uk-form-small uk-width-1-1"  id="birth" ></td>
-                  </tr>
-                  <tr>
-                    <th>전화번호</th>
-                    <td><input type="telephone" name="telephone" class="uk-form-small uk-width-1-1" id="telephone"></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"><a href="#" class="uk-button uk-width-1-1" id="check_email" onclick="member_check();">확인</a></td>
-                  </tr>
-                  
-                </table>
-
-    </p>
-
-    </div>
-  
-    </div>
 
 
 <div id="call_info_modal" class="modal">
@@ -293,12 +257,6 @@
          async defer></script>
     <script type="text/javascript">
    
-    check_join();
-var keyName = window.localStorage.key(0);
-var value = window.localStorage.getItem("key");
-if (value=='yes') {
-   $("#join_modal").removeClass('active');
- }
 
         app.initialize();
     </script>
@@ -306,32 +264,7 @@ if (value=='yes') {
 
 
 <script>
-// uuid 회원 등록 확인
-function check_join() {
-    var deviceid=device.uuid;
-     $.post("http://pataling.cafe24.com/app_test/check_uuid_app.php",
-   {
-   
-    deviceid:deviceid
-   },
-   function(data){
- 
-       
-    var data=data;
-    console.log(data);
-        if (data=="yes") {
-          window.localStorage.setItem("key", "yes");
-          alert_msg("알림","회원확인이 되었습니다.");
-         
-        } else {
-           alert_msg("알림","회원확인이 되지 않으셨습니다. 회원가입해주세요.");
-            window.localStorage.removeItem("key");
-        
-          
-        }
-   })
-        
-}
+
 
 function move() {
   
