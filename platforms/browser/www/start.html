@@ -40,7 +40,7 @@
 
  <script type="text/javascript" src="js/jquery.min.js"></script>
  
-      <link rel="stylesheet" type="text/css" href="css/uikit.min.css">
+      <link rel="stylesheet" type="text/css" href="css/uikit.gradient.min.css">
        <link href="css/ratchet.min.css" rel="stylesheet">
 
           <script src="js/uikit.js"></script>
@@ -64,14 +64,14 @@
 </header>
 
 <div style="width:100%; height:100%;  overflow:scroll;">
-<div id="map"  class="bar bar-standard bar-header-secondary" style="height:150px; width:100%; float:left; position:"></div>
+<div id="map"  class="bar bar-standard bar-header-secondary" style="height:150px; width:100%; float:left; display:none;"></div>
 <div style="width:100%; height:80%;  overflow:hidden;">
 
 <ul class="table-view" style="margin-top:45px;">
   <li class="table-view-cell">출발지 <input name="member_no" id="member_no" type="hidden" value=""><input name="area1" id="area1" readonly type=text style="width:70%; border:0px; margin:0px; " onclick="open_area_check();"> <a class="btn" href="#area_check">위치선택</button></a></li>
   <li class="table-view-cell">차량선택 <input name="cartype" id="cartype" readonly type=text style="width:70%; border:1px; margin:0px; " onclick="open_cartype_check();"> <a class="btn" onclick="open_cartype_check();">차종선택</button></a></li>
   
-  <li class="table-view-cell">출발일 <input name="date1" type=date id="date1" style="width:70%; border:1px #dedede solid; margin:0px; "></li>
+  <li class="table-view-cell">출발일자 <input name="date1" type=date id="date1" style="width:70%; border:1px #dedede solid; margin:0px; "></li>
   <li class="table-view-cell">출발시간  <select name="time1" id="time1" style="width:70%; border:0px; margin:0px; ">
   <option value="">출발시간선택</option>
   <option value="1">오전1시</option>

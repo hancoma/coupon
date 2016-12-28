@@ -11,9 +11,5 @@
             "PACKAGE_NAME": "com.rantcar.hancoma"
         }
     },
-    "dependent_plugins": {},
-    "modules": [],
-    "plugin_metadata": {
-        "cordova-plugin-datepicker": "0.9.3"
-    }
+    "dependent_plugins": {}
 }
