@@ -65,6 +65,7 @@ function member_save () {
    var deviceid=device.uuid;
    var telephone=$("#telephone").val();
    var birth=$("#birth").val();
+   var email=$("#email").val();
   
    if (!birth) {
     alert_msg("경고","생일을 선택해주세요.");
@@ -74,6 +75,10 @@ function member_save () {
     alert_msg("경고","전화번호를 입력해주세요.");
     exit;
    }
+   if (!email) {
+    alert_msg("경고","메일을 입력하세요.");
+    exit;
+   }
 
 
      $.post("http://pataling.cafe24.com/app_test/member_save_app.php",
@@ -81,7 +86,8 @@ function member_save () {
    
     deviceid:deviceid,
     telephone:telephone,
-    birth:birth
+    birth:birth,
+    email:email
    },
    function(data){
     var data=data;
@@ -91,7 +97,7 @@ function member_save () {
  
         }
         if (data=="no") {
-          alert_msg("경고","이미 가입되어있는 전화번호 입니다.");
+          alert_msg("경고","이미 가입되어있는 이메일 입니다.");
           exit;
         }
    })
