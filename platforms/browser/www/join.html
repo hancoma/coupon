@@ -123,12 +123,7 @@
       var day = now.getDate()>9 ? ''+now.getDate() : '0'+now.getDate();
       var chan_val = year + '-' + mon + '-' + day;
             $("#birth").val(chan_val);
-         var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
-telephoneNumber.get(function(result) {
-        console.log("result = " + result);
-    }, function() {
-        console.log("error");
-    });
+        
    
     </script>
 </body>
