@@ -9,6 +9,9 @@
     "installed_plugins": {
         "cordova-plugin-datepicker": {
             "PACKAGE_NAME": "com.rantcar.hancoma"
+        },
+        "cordova-plugin-sim": {
+            "PACKAGE_NAME": "com.rantcar.hancoma"
         }
     },
     "dependent_plugins": {}

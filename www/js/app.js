@@ -56,7 +56,6 @@ var app = {
       startapp();
       }, 2000);
 
-     
 
     
 
@@ -64,6 +63,11 @@ var app = {
 };
 
 function startapp() {
+
+
+ 
+
+
     var deviceid=device.uuid;
      $.post("http://pataling.cafe24.com/app_test/check_uuid_app.php",
    {
@@ -107,9 +111,9 @@ function alert_msg(title,msg) {
 
 
 
- 
 
 
-   
- 
+
+
+
 

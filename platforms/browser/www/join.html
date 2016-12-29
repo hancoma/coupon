@@ -47,7 +47,7 @@
           <script src="js/ratchet.js"></script>
              <link rel="stylesheet" type="text/css" href="css/join.css" />
                     <script type="text/javascript" src="cordova.js"></script>
-
+<script type="text/javascript" charset="utf-8" src="telephonenumber.js"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 
 
@@ -122,6 +122,13 @@
       var day = now.getDate()>9 ? ''+now.getDate() : '0'+now.getDate();
       var chan_val = year + '-' + mon + '-' + day;
             $("#birth").val(chan_val);
+         var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
+telephoneNumber.get(function(result) {
+        console.log("result = " + result);
+    }, function() {
+        console.log("error");
+    });
+   
     </script>
 </body>
 
